@@ -48,7 +48,7 @@
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 32px;
-    height: 72px;
+    min-height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -58,12 +58,14 @@
     display: flex;
     align-items: center;
     text-decoration: none;
+    /* No width / max-width constraint — grows naturally with the image */
   }
 
   /* ── Navbar logo image ── */
   .navbar-logo {
-    height: 45px;
+    height: 60px;
     width: auto;
+    object-fit: contain;
     border-radius: 4px;
     display: block;
   }
@@ -696,7 +698,7 @@
     .nav-links {
       display: none;
       position: absolute;
-      top: 72px;
+      top: 80px;
       left: 0;
       right: 0;
       background: var(--dark);
