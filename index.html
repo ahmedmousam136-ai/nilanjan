@@ -366,7 +366,7 @@
   }
 
   /* ═══════════════════════════════
-     OUR BRANDS — IMAGE + OVERLAY
+     OUR BRANDS — CSS GRID CARDS
   ═══════════════════════════════ */
   #brands {
     background: var(--light);
@@ -384,64 +384,38 @@
   .brands-header { text-align: center; }
   .brands-header .title-underline { margin: 0 auto 48px; }
 
-  /* ── Core wrapper ── */
-  .brands-section-wrapper {
-    position: relative;
-    width: 100%;
-    /* Height is driven by the image; JS sets an explicit px height on this
-       element after image loads so the overlay nodes can use absolute % coords */
-    user-select: none;
-  }
-
-  /* The actual logo sheet */
-  .brands-section-wrapper > .brands-sheet {
-    display: block;
-    width: 100%;
-    height: auto;
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 40px 20px;
+    background: #ffffff;
     border-radius: 14px;
-    box-shadow: var(--shadow-strong);
-    /* Prevent browser from dragging the image while hovering nodes */
-    pointer-events: none;
-    -webkit-user-drag: none;
+    box-shadow: var(--shadow);
   }
 
-  /* ── Transparent hover node sitting on top of each logo ── */
-  .interactive-logo-node {
-    position: absolute;
-    border-radius: 12px;
+  .brand-card {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    padding: 25px 15px;
+    border-radius: 6px;
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #2c3e50;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease, color 0.3s ease;
     cursor: pointer;
-    /* Invisible by default — only the transform/shadow animate */
-    background: transparent;
-    /* Smooth lift */
-    transition:
-      transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
-      box-shadow 0.28s ease,
-      background 0.22s ease;
-    /* Needed so the node sits above the image */
-    z-index: 2;
   }
 
-  .interactive-logo-node:hover {
-    transform: translateY(-10px) scale(1.06);
-    background: rgba(255, 255, 255, 0.55);
-    box-shadow:
-      0 18px 40px rgba(26, 58, 107, 0.18),
-      0 0 0 2px rgba(232, 119, 34, 0.25);
-    backdrop-filter: blur(2px);
-    z-index: 10;
-  }
-
-  /* Optional: ripple ring on hover */
-  .interactive-logo-node::after {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 14px;
-    border: 2px solid transparent;
-    transition: border-color 0.25s;
-  }
-  .interactive-logo-node:hover::after {
-    border-color: rgba(232, 119, 34, 0.35);
+  .brand-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    border-color: #007bff;
+    color: #007bff;
   }
 
   /* ═══════════════════════════════
@@ -690,14 +664,14 @@
     .contact-grid { grid-template-columns: 1fr; gap: 36px; }
     .footer-bottom { flex-direction: column; text-align: center; }
     .hero-inner { padding: 48px 20px; }
-    /* On mobile the overlay nodes are still rendered but scaled down;
-       they remain tappable / hoverable */
+    .brands-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; padding: 24px 12px; }
   }
 
   @media (max-width: 480px) {
     .why-stats { grid-template-columns: 1fr 1fr; }
     .stat-number { font-size: 2.2rem; }
     nav { padding: 0 20px; }
+    .brands-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -786,34 +760,27 @@
       <div class="title-underline"></div>
     </div>
 
-    <!--
-      ════════════════════════════════════════════════════════════════
-      INTERACTIVE BRAND OVERLAY  —  HOW IT WORKS
-      ════════════════════════════════════════════════════════════════
-      1. .brands-section-wrapper  →  relative-positioned container.
-      2. .brands-sheet            →  the single image "our brands.jpg".
-      3. JS builds .interactive-logo-node divs (absolute, transparent)
-         layered on top of every logo cell using percentage coordinates.
-      4. CSS :hover on each node triggers a localised translateY / scale
-         lift — no other cell is affected.
-      5. On window resize, JS recalculates all node positions so the
-         overlay stays perfectly registered to the image at every width.
-
-      TO ADJUST LOGO POSITIONS:
-        Edit the `LOGO_GRID` array below — each entry is:
-        { left, top, width, height }  in  0–100 % of the image dimensions.
-        Add / remove entries to match your actual image layout.
-      ════════════════════════════════════════════════════════════════
-    -->
-    <div class="brands-section-wrapper" id="brandWrapper">
-      <img
-        src="our brands.jpg"
-        alt="Our Brand Partners — Schneider Electric, Allen-Bradley, Siemens, Autonics, ABB, Delta, Mitsubishi, Omron, Danfoss, Yaskawa, Legrand, Phoenix Contact"
-        class="brands-sheet"
-        id="brandsSheet"
-        draggable="false"
-      >
-      <!-- .interactive-logo-node elements are injected here by JS -->
+    <div class="brands-grid">
+      <div class="brand-card"><span>Siemens</span></div>
+      <div class="brand-card"><span>Schneider Electric</span></div>
+      <div class="brand-card"><span>Allen-Bradley</span></div>
+      <div class="brand-card"><span>Omron</span></div>
+      <div class="brand-card"><span>Larsen &amp; Toubro</span></div>
+      <div class="brand-card"><span>Eaton</span></div>
+      <div class="brand-card"><span>Phoenix Contact</span></div>
+      <div class="brand-card"><span>Pepperl+Fuchs</span></div>
+      <div class="brand-card"><span>ABB</span></div>
+      <div class="brand-card"><span>Yaskawa</span></div>
+      <div class="brand-card"><span>Fuji Electric</span></div>
+      <div class="brand-card"><span>Delta</span></div>
+      <div class="brand-card"><span>Turck</span></div>
+      <div class="brand-card"><span>Autonics</span></div>
+      <div class="brand-card"><span>SICK</span></div>
+      <div class="brand-card"><span>Baumer</span></div>
+      <div class="brand-card"><span>Mean Well</span></div>
+      <div class="brand-card"><span>Luminous</span></div>
+      <div class="brand-card"><span>Selec</span></div>
+      <div class="brand-card"><span>Janatics</span></div>
     </div>
   </div>
 </section>
@@ -935,7 +902,7 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════════
-     JAVASCRIPT
+     JAVASCRIPT  —  Hero slider + nav toggle only
 ═══════════════════════════════════════════════════════════════ -->
 <script>
   /* ── NAV TOGGLE ──────────────────────────────────── */
@@ -977,7 +944,7 @@
 
   resetAuto();
 
-  // Swipe
+  // Swipe support
   let touchStartX = 0;
   const sliderWrap = document.querySelector('.slider-wrap');
   sliderWrap.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
@@ -985,112 +952,6 @@
     const dx = e.changedTouches[0].clientX - touchStartX;
     if (Math.abs(dx) > 40) moveSlide(dx < 0 ? 1 : -1);
   }, { passive: true });
-
-
-  /* ══════════════════════════════════════════════════════════════
-     INTERACTIVE BRAND LOGO OVERLAY
-     ══════════════════════════════════════════════════════════════
-
-     LOGO_GRID defines where each logo lives inside "our brands.jpg".
-     Values are percentages (0–100) of the image's rendered width/height.
-
-     Layout assumed: 4 columns × 3 rows  (12 logos total).
-
-     ┌─────────────────────────────────────────────────────────────┐
-     │  Adjust left / top / width / height to match your image.   │
-     │  You can open DevTools → inspect wrapper → note pixel dims, │
-     │  then convert to % = (px / totalPx) * 100.                 │
-     └─────────────────────────────────────────────────────────────┘
-
-     Each entry:
-       label  — accessible name (used for aria-label & title tooltip)
-       left   — % from left edge of image to cell left edge
-       top    — % from top edge of image to cell top edge
-       width  — % of image width this cell occupies
-       height — % of image height this cell occupies
-  ══════════════════════════════════════════════════════════════ */
-
-  const LOGO_GRID = [
-    /* ── Row 1 ── */
-    { label: 'Schneider Electric', left:  1.5, top:  3,   width: 22.5, height: 27 },
-    { label: 'Allen-Bradley',      left: 26,   top:  3,   width: 22.5, height: 27 },
-    { label: 'Siemens',            left: 50.5, top:  3,   width: 22.5, height: 27 },
-    { label: 'Autonics',           left: 75,   top:  3,   width: 23.5, height: 27 },
-
-    /* ── Row 2 ── */
-    { label: 'ABB',                left:  1.5, top: 36,   width: 22.5, height: 27 },
-    { label: 'Delta Electronics',  left: 26,   top: 36,   width: 22.5, height: 27 },
-    { label: 'Mitsubishi Electric',left: 50.5, top: 36,   width: 22.5, height: 27 },
-    { label: 'Omron',              left: 75,   top: 36,   width: 23.5, height: 27 },
-
-    /* ── Row 3 ── */
-    { label: 'Danfoss',            left:  1.5, top: 69,   width: 22.5, height: 27 },
-    { label: 'Yaskawa',            left: 26,   top: 69,   width: 22.5, height: 27 },
-    { label: 'Legrand',            left: 50.5, top: 69,   width: 22.5, height: 27 },
-    { label: 'Phoenix Contact',    left: 75,   top: 69,   width: 23.5, height: 27 },
-  ];
-
-  /* ── Build overlay nodes ─────────────────────────────────────── */
-  (function buildLogoOverlay() {
-    const wrapper = document.getElementById('brandWrapper');
-    const sheet   = document.getElementById('brandsSheet');
-
-    /**
-     * Position all nodes relative to the current rendered image size.
-     * Called once on load and again on every resize.
-     */
-    function positionNodes() {
-      const imgW = sheet.offsetWidth;
-      const imgH = sheet.offsetHeight;
-
-      // Sync wrapper height so absolute children don't escape
-      wrapper.style.height = imgH + 'px';
-
-      document.querySelectorAll('.interactive-logo-node').forEach((node, i) => {
-        const cell = LOGO_GRID[i];
-        node.style.left   = (cell.left   / 100 * imgW) + 'px';
-        node.style.top    = (cell.top    / 100 * imgH) + 'px';
-        node.style.width  = (cell.width  / 100 * imgW) + 'px';
-        node.style.height = (cell.height / 100 * imgH) + 'px';
-      });
-    }
-
-    /** Create a single transparent hover node */
-    function createNode(cell) {
-      const node = document.createElement('div');
-      node.className = 'interactive-logo-node';
-      node.setAttribute('role', 'button');
-      node.setAttribute('tabindex', '0');
-      node.setAttribute('aria-label', cell.label);
-      node.title = cell.label;
-
-      // Keyboard accessibility — lift on focus too
-      node.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') node.classList.toggle('active');
-      });
-
-      wrapper.appendChild(node);
-      return node;
-    }
-
-    // Inject all nodes
-    LOGO_GRID.forEach(cell => createNode(cell));
-
-    // Position immediately if image is already loaded (cached)
-    if (sheet.complete && sheet.naturalWidth) {
-      positionNodes();
-    } else {
-      sheet.addEventListener('load', positionNodes);
-    }
-
-    // Re-position on every resize (debounced for performance)
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(positionNodes, 60);
-    });
-  })();
-
 </script>
 </body>
 </html>
