@@ -34,44 +34,52 @@
   }
 
   /* ═══════════════════════════════
-     HEADER / NAV
+     HEADER / NAV  — FULLY FIXED
   ═══════════════════════════════ */
+
+  /* 1. Header adapts to logo height */
   header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: var(--dark);
-    box-shadow: 0 2px 20px rgba(0,0,0,0.25);
-    height: auto;
-    min-height: 90px;
-    padding: 15px 0;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    background: var(--dark) !important;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.25) !important;
+    height: auto !important;
+    min-height: unset !important;
+    padding: 15px 0 !important;
   }
 
   nav {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 32px;
-    height: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
+  /* 2. Logo link — no width caps, no background box */
   .logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    width: auto;
-    max-width: none;
+    display: flex !important;
+    align-items: center !important;
+    width: auto !important;
+    max-width: none !important;
+    background: none !important;
+    padding: 0 !important;
+    text-decoration: none !important;
+    flex-shrink: 0 !important;
   }
 
-  /* ── Navbar logo image ── */
+  /* 3. Logo image — full-scale, contained */
   .navbar-logo {
-    height: 65px;
-    width: auto;
-    object-fit: contain;
-    display: block;
+    height: 65px !important;
+    width: auto !important;
+    max-width: none !important;
+    object-fit: contain !important;
+    display: block !important;
     border-radius: 4px;
+    background: none !important;
+    box-shadow: none !important;
   }
 
   .nav-links {
@@ -702,7 +710,7 @@
     .nav-links {
       display: none;
       position: absolute;
-      top: 90px;
+      top: 95px;          /* matches header height: 15px pad top + 65px logo + 15px pad bottom */
       left: 0;
       right: 0;
       background: var(--dark);
@@ -732,7 +740,7 @@
 <!-- ─── HEADER ─────────────────────────────────── -->
 <header>
   <nav>
-    <!-- Logo: single image containing gear + text, no duplicate text tags -->
+    <!-- Logo: single image — no wrapper background, no width constraints -->
     <a href="#home" class="logo">
       <img src="device control logo.jpeg" alt="Device & Controls Logo" class="navbar-logo">
     </a>
