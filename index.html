@@ -64,17 +64,16 @@
   .logo-icon {
     width: 48px;
     height: 48px;
-    background: linear-gradient(135deg, var(--blue-mid), var(--orange));
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    position: relative;
     overflow: hidden;
+    flex-shrink: 0;
   }
 
-  .logo-icon svg { width: 28px; height: 28px; }
+  .logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   .logo-text {
     display: flex;
@@ -431,7 +430,6 @@
   .brands-header { text-align: center; }
   .brands-header .title-underline { margin: 0 auto 48px; }
 
-  /* Brand image display */
   .brands-image-wrap {
     display: flex;
     justify-content: center;
@@ -538,7 +536,6 @@
     letter-spacing: 0.02em;
   }
 
-  /* Stats panel */
   .why-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -763,10 +760,8 @@
   <nav>
     <a href="#home" class="logo">
       <div class="logo-icon">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="16" cy="16" r="5" stroke="white" stroke-width="2" fill="none"/>
-          <path d="M16 2v4M16 26v4M2 16h4M26 16h4M5.93 5.93l2.83 2.83M23.24 23.24l2.83 2.83M5.93 26.07l2.83-2.83M23.24 8.76l2.83-2.83" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+        <!-- ✅ UPDATED: exact filename from GitHub -->
+        <img src="device control logo.jpg" alt="Device & Controls Logo">
       </div>
       <div class="logo-text">
         <span class="top">DEVICE</span>
@@ -802,8 +797,9 @@
     <div class="slider-wrap">
       <div class="slides" id="slides">
 
+        <!-- ✅ UPDATED: exact filenames from GitHub (spaces included) -->
         <div class="slide">
-          <img src="/mnt/user-data/uploads/1779062408086_image.png" alt="Schneider Electric Altivar 61F VFD">
+          <img src="vfd.jpg" alt="VFD Product">
           <div class="slide-label">
             <div class="brand">Schneider Electric</div>
             <h3>Altivar 61F VFD</h3>
@@ -812,7 +808,7 @@
         </div>
 
         <div class="slide">
-          <img src="/mnt/user-data/uploads/1779062417529_image.png" alt="Allen-Bradley PowerFlex 40">
+          <img src="vfd2.jpg" alt="VFD Drive">
           <div class="slide-label">
             <div class="brand">Allen-Bradley</div>
             <h3>PowerFlex 40 Drive</h3>
@@ -821,7 +817,7 @@
         </div>
 
         <div class="slide">
-          <img src="/mnt/user-data/uploads/1779062427569_image.png" alt="Autonics MP5W Pulse Meter">
+          <img src="panel meter.jpg" alt="Panel Meter">
           <div class="slide-label">
             <div class="brand">Autonics</div>
             <h3>MP5W Pulse Meter</h3>
@@ -857,7 +853,8 @@
     </div>
 
     <div class="brands-image-wrap">
-      <img src="brands.jpg" alt="Our Brand Partners" class="brand-matrix-img">
+      <!-- ✅ UPDATED: exact filename from GitHub -->
+      <img src="our brands.jpg" alt="Our Brand Partners" class="brand-matrix-img">
     </div>
   </div>
 </section>
