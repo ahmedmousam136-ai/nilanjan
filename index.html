@@ -23,9 +23,7 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
     font-family: 'Barlow', sans-serif;
     color: var(--text);
@@ -34,10 +32,8 @@
   }
 
   /* ═══════════════════════════════
-     HEADER / NAV  — FULLY FIXED
+     HEADER / NAV
   ═══════════════════════════════ */
-
-  /* 1. Header adapts to logo height */
   header {
     position: sticky !important;
     top: 0 !important;
@@ -58,7 +54,6 @@
     justify-content: space-between;
   }
 
-  /* 2. Logo link — no width caps, no background box */
   .logo {
     display: flex !important;
     align-items: center !important;
@@ -70,7 +65,6 @@
     flex-shrink: 0 !important;
   }
 
-  /* 3. Logo image — full-scale, contained */
   .navbar-logo {
     height: 65px !important;
     width: auto !important;
@@ -105,10 +99,8 @@
   .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
     background: var(--orange);
     transition: width 0.3s cubic-bezier(0.4,0,0.2,1);
   }
@@ -125,8 +117,7 @@
   }
   .hamburger span {
     display: block;
-    width: 26px;
-    height: 2px;
+    width: 26px; height: 2px;
     background: var(--white);
     border-radius: 2px;
     transition: all 0.3s;
@@ -196,18 +187,20 @@
     margin-bottom: 22px;
   }
 
-  .hero-badge span { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; display: inline-block; animation: pulse-dot 1.5s infinite; }
+  .hero-badge span {
+    width: 6px; height: 6px;
+    background: var(--orange);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse-dot 1.5s infinite;
+  }
 
   @keyframes pulse-dot {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.4; transform: scale(0.7); }
   }
 
-  .hero-cta {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
+  .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
 
   .btn-primary {
     background: linear-gradient(135deg, var(--orange), var(--orange-light));
@@ -225,7 +218,6 @@
     transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 4px 20px rgba(232,119,34,0.35);
   }
-
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,119,34,0.5); }
 
   .btn-secondary {
@@ -243,7 +235,6 @@
     cursor: pointer;
     transition: border-color 0.2s, background 0.2s;
   }
-
   .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
 
   /* Slider */
@@ -283,14 +274,9 @@
     filter: drop-shadow(0 8px 24px rgba(26,58,107,0.18));
     transition: transform 0.4s;
   }
-
   .slide:hover img { transform: scale(1.04); }
 
-  .slide-label {
-    text-align: center;
-    padding: 0 12px;
-  }
-
+  .slide-label { text-align: center; padding: 0 12px; }
   .slide-label .brand {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 0.78rem;
@@ -300,26 +286,19 @@
     color: var(--orange);
     margin-bottom: 4px;
   }
-
   .slide-label h3 {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
     font-size: 1.15rem;
     color: var(--blue);
   }
-
-  .slide-label p {
-    font-size: 0.82rem;
-    color: var(--text-light);
-    margin-top: 4px;
-  }
+  .slide-label p { font-size: 0.82rem; color: var(--text-light); margin-top: 4px; }
 
   .slider-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 38px;
-    height: 38px;
+    width: 38px; height: 38px;
     border-radius: 50%;
     background: var(--white);
     border: none;
@@ -332,37 +311,31 @@
     z-index: 10;
     transition: background 0.2s, color 0.2s;
   }
-
   .slider-btn:hover { background: var(--orange); color: var(--white); }
   .slider-btn.prev { left: 12px; }
   .slider-btn.next { right: 12px; }
 
   .slider-dots {
     position: absolute;
-    bottom: 14px;
-    left: 50%;
+    bottom: 14px; left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 7px;
   }
-
   .dot {
-    width: 7px;
-    height: 7px;
+    width: 7px; height: 7px;
     border-radius: 50%;
     background: rgba(26,58,107,0.2);
     cursor: pointer;
     transition: background 0.2s, transform 0.2s;
     border: none;
   }
-
   .dot.active { background: var(--orange); transform: scale(1.35); }
 
   /* ═══════════════════════════════
      SECTION COMMONS
   ═══════════════════════════════ */
   section { padding: 90px 32px; }
-
   .section-inner { max-width: 1280px; margin: 0 auto; }
 
   .section-label {
@@ -386,15 +359,14 @@
   }
 
   .title-underline {
-    width: 52px;
-    height: 4px;
+    width: 52px; height: 4px;
     border-radius: 2px;
     background: linear-gradient(90deg, var(--orange), var(--orange-light));
     margin-bottom: 40px;
   }
 
   /* ═══════════════════════════════
-     OUR BRAND
+     OUR BRANDS — IMAGE + OVERLAY
   ═══════════════════════════════ */
   #brands {
     background: var(--light);
@@ -412,82 +384,64 @@
   .brands-header { text-align: center; }
   .brands-header .title-underline { margin: 0 auto 48px; }
 
-  /* Individual brand grid */
-  .brands-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-
-  .brand-item {
-    background: var(--white);
-    border-radius: 14px;
-    padding: 28px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    border: 1px solid rgba(26,58,107,0.08);
-    box-shadow: 0 2px 12px rgba(26,58,107,0.06);
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-    filter: grayscale(20%);
-    min-height: 130px;
-  }
-
-  .brand-item:hover {
-    transform: translateY(-10px) scale(1.08);
-    box-shadow: 0 18px 36px rgba(26,58,107,0.15);
-    filter: grayscale(0%);
-  }
-
-  .brand-item img {
+  /* ── Core wrapper ── */
+  .brands-section-wrapper {
+    position: relative;
     width: 100%;
-    max-width: 130px;
-    height: 52px;
-    object-fit: contain;
+    /* Height is driven by the image; JS sets an explicit px height on this
+       element after image loads so the overlay nodes can use absolute % coords */
+    user-select: none;
+  }
+
+  /* The actual logo sheet */
+  .brands-section-wrapper > .brands-sheet {
     display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    box-shadow: var(--shadow-strong);
+    /* Prevent browser from dragging the image while hovering nodes */
+    pointer-events: none;
+    -webkit-user-drag: none;
   }
 
-  .brand-item-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-light);
-    text-align: center;
+  /* ── Transparent hover node sitting on top of each logo ── */
+  .interactive-logo-node {
+    position: absolute;
+    border-radius: 12px;
+    cursor: pointer;
+    /* Invisible by default — only the transform/shadow animate */
+    background: transparent;
+    /* Smooth lift */
+    transition:
+      transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.28s ease,
+      background 0.22s ease;
+    /* Needed so the node sits above the image */
+    z-index: 2;
   }
 
-  /* Placeholder logo box shown until real images are linked */
-  .brand-logo-placeholder {
-    width: 120px;
-    height: 48px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1rem;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+  .interactive-logo-node:hover {
+    transform: translateY(-10px) scale(1.06);
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow:
+      0 18px 40px rgba(26, 58, 107, 0.18),
+      0 0 0 2px rgba(232, 119, 34, 0.25);
+    backdrop-filter: blur(2px);
+    z-index: 10;
   }
 
-  @media (max-width: 1024px) {
-    .brands-grid { grid-template-columns: repeat(3, 1fr); }
+  /* Optional: ripple ring on hover */
+  .interactive-logo-node::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 14px;
+    border: 2px solid transparent;
+    transition: border-color 0.25s;
   }
-
-  @media (max-width: 768px) {
-    .brands-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .brand-item { padding: 22px 14px; min-height: 110px; }
-  }
-
-  @media (max-width: 480px) {
-    .brands-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .brand-item { padding: 18px 10px; min-height: 100px; }
-    .brand-item img { height: 40px; }
+  .interactive-logo-node:hover::after {
+    border-color: rgba(232, 119, 34, 0.35);
   }
 
   /* ═══════════════════════════════
@@ -502,10 +456,8 @@
   #why::after {
     content: '';
     position: absolute;
-    right: -120px;
-    top: -80px;
-    width: 480px;
-    height: 480px;
+    right: -120px; top: -80px;
+    width: 480px; height: 480px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(232,119,34,0.06) 0%, transparent 70%);
     pointer-events: none;
@@ -541,15 +493,10 @@
     border-left: 3px solid var(--orange);
     transition: transform 0.2s, box-shadow 0.2s;
   }
-
-  .feature-item:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow);
-  }
+  .feature-item:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 
   .check-icon {
-    width: 28px;
-    height: 28px;
+    width: 28px; height: 28px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--orange), var(--orange-light));
     display: flex;
@@ -558,7 +505,6 @@
     flex-shrink: 0;
     margin-top: 1px;
   }
-
   .check-icon svg { width: 14px; height: 14px; stroke: white; fill: none; stroke-width: 2.5; }
 
   .feature-item strong {
@@ -585,9 +531,7 @@
     border: 1px solid rgba(26,58,107,0.07);
     transition: transform 0.22s;
   }
-
   .stat-card:hover { transform: translateY(-4px); }
-
   .stat-card::before {
     content: '';
     position: absolute;
@@ -595,7 +539,6 @@
     height: 3px;
     background: linear-gradient(90deg, var(--orange), var(--orange-light));
   }
-
   .stat-card:nth-child(2)::before { background: linear-gradient(90deg, var(--blue-mid), var(--blue-light)); }
   .stat-card:nth-child(3)::before { background: linear-gradient(90deg, var(--blue-light), var(--orange)); }
   .stat-card:nth-child(4)::before { background: linear-gradient(90deg, var(--orange-light), var(--orange)); }
@@ -608,15 +551,8 @@
     line-height: 1;
     margin-bottom: 6px;
   }
-
   .stat-number em { color: var(--orange); font-style: normal; }
-
-  .stat-label {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    font-weight: 500;
-    letter-spacing: 0.03em;
-  }
+  .stat-label { font-size: 0.85rem; color: var(--text-light); font-weight: 500; letter-spacing: 0.03em; }
 
   /* ═══════════════════════════════
      CONTACT / FOOTER
@@ -632,14 +568,6 @@
     grid-template-columns: 1.4fr 1fr 1fr;
     gap: 60px;
     margin-bottom: 64px;
-  }
-
-  .contact-brand .logo-text .top {
-    font-size: 1.6rem;
-    background: linear-gradient(90deg, #5ab4ff, var(--white));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
 
   .contact-desc {
@@ -661,7 +589,6 @@
   }
 
   .contact-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-
   .contact-col ul li {
     font-size: 0.9rem;
     color: rgba(255,255,255,0.6);
@@ -670,7 +597,6 @@
     gap: 10px;
     line-height: 1.5;
   }
-
   .contact-col ul li svg { width: 15px; height: 15px; flex-shrink: 0; stroke: var(--orange); fill: none; stroke-width: 2; }
 
   .footer-bottom {
@@ -682,26 +608,20 @@
     gap: 16px;
     flex-wrap: wrap;
   }
-
-  .footer-bottom p {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.35);
-  }
+  .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
 
   /* ═══════════════════════════════
      WHATSAPP FLOAT
   ═══════════════════════════════ */
   .wa-float {
     position: fixed;
-    bottom: 28px;
-    right: 28px;
+    bottom: 28px; right: 28px;
     z-index: 9999;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 10px;
   }
-
   .wa-tooltip {
     background: var(--white);
     color: var(--text);
@@ -716,12 +636,9 @@
     transition: opacity 0.25s, transform 0.25s;
     pointer-events: none;
   }
-
   .wa-float:hover .wa-tooltip { opacity: 1; transform: translateX(0); }
-
   .wa-btn {
-    width: 60px;
-    height: 60px;
+    width: 60px; height: 60px;
     border-radius: 50%;
     background: #25D366;
     display: flex;
@@ -732,10 +649,8 @@
     transition: transform 0.2s, box-shadow 0.2s;
     animation: wa-pop 2.5s ease-in-out infinite;
   }
-
   .wa-btn:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,0.55); }
   .wa-btn svg { width: 32px; height: 32px; fill: white; }
-
   @keyframes wa-pop {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.06); }
@@ -761,9 +676,7 @@
     .nav-links {
       display: none;
       position: absolute;
-      top: 95px;          /* matches header height: 15px pad top + 65px logo + 15px pad bottom */
-      left: 0;
-      right: 0;
+      top: 95px; left: 0; right: 0;
       background: var(--dark);
       flex-direction: column;
       padding: 24px;
@@ -777,6 +690,8 @@
     .contact-grid { grid-template-columns: 1fr; gap: 36px; }
     .footer-bottom { flex-direction: column; text-align: center; }
     .hero-inner { padding: 48px 20px; }
+    /* On mobile the overlay nodes are still rendered but scaled down;
+       they remain tappable / hoverable */
   }
 
   @media (max-width: 480px) {
@@ -791,15 +706,12 @@
 <!-- ─── HEADER ─────────────────────────────────── -->
 <header>
   <nav>
-    <!-- Logo: single image — no wrapper background, no width constraints -->
     <a href="#home" class="logo">
       <img src="device control logo.jpeg" alt="Device & Controls Logo" class="navbar-logo">
     </a>
-
     <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </div>
-
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
       <li><a href="#brands">Product</a></li>
@@ -823,7 +735,6 @@
 
     <div class="slider-wrap">
       <div class="slides" id="slides">
-
         <div class="slide">
           <img src="panel meter.jpeg" alt="Panel Meter">
           <div class="slide-label">
@@ -832,7 +743,6 @@
             <p>Digital Indicator Panel</p>
           </div>
         </div>
-
         <div class="slide">
           <img src="vfd.jpeg" alt="VFD Drive">
           <div class="slide-label">
@@ -841,7 +751,6 @@
             <p>1.5kW – 2HP | 380/415 V~</p>
           </div>
         </div>
-
         <div class="slide">
           <img src="vfd2.jpeg" alt="VFD 2">
           <div class="slide-label">
@@ -850,7 +759,6 @@
             <p>Industrial Variable Speed Drive</p>
           </div>
         </div>
-
       </div>
 
       <button class="slider-btn prev" onclick="moveSlide(-1)" aria-label="Previous">
@@ -869,7 +777,7 @@
   </div>
 </section>
 
-<!-- ─── OUR BRAND ──────────────────────────────── -->
+<!-- ─── OUR BRANDS ─────────────────────────────── -->
 <section id="brands">
   <div class="section-inner">
     <div class="brands-header">
@@ -879,86 +787,33 @@
     </div>
 
     <!--
-      HOW TO USE:
-      • If you have logo image files, replace the <div class="brand-logo-placeholder"> inside
-        each .brand-item with: <img src="your-logo-file.png" alt="Brand Name">
-      • To add / remove brands, copy or delete a .brand-item block.
-      • The grid auto-reflows: 4 cols desktop → 3 cols tablet → 2 cols mobile.
+      ════════════════════════════════════════════════════════════════
+      INTERACTIVE BRAND OVERLAY  —  HOW IT WORKS
+      ════════════════════════════════════════════════════════════════
+      1. .brands-section-wrapper  →  relative-positioned container.
+      2. .brands-sheet            →  the single image "our brands.jpg".
+      3. JS builds .interactive-logo-node divs (absolute, transparent)
+         layered on top of every logo cell using percentage coordinates.
+      4. CSS :hover on each node triggers a localised translateY / scale
+         lift — no other cell is affected.
+      5. On window resize, JS recalculates all node positions so the
+         overlay stays perfectly registered to the image at every width.
+
+      TO ADJUST LOGO POSITIONS:
+        Edit the `LOGO_GRID` array below — each entry is:
+        { left, top, width, height }  in  0–100 % of the image dimensions.
+        Add / remove entries to match your actual image layout.
+      ════════════════════════════════════════════════════════════════
     -->
-    <div class="brands-grid">
-
-      <!-- 1 -->
-      <div class="brand-item">
-        <div class="brand-logo-placeholder" style="background:#eaf1fb;color:#1a3a6b;">SCHNEIDER</div>
-        <span class="brand-item-name">Schneider Electric</span>
-      </div>
-
-      <!-- 2 -->
-      <div class="brand-item">
-        <div class="brand-logo-placeholder" style="background:#fff3e8;color:#e87722;">ALLEN‑BRADLEY</div>
-        <span class="brand-item-name">Allen-Bradley</span>
-      </div>
-
-      <!-- 3 -->
-      <div class="brand-item">
-        <div class="brand-logo-placeholder" style="background:#eaf1fb;color:#1e5fa8;">SIEMENS</div>
-        <span class="brand-item-name">Siemens</span>
-      </div>
-
-      <!-- 4 -->
-      <div class="brand-item">
-        <div class="brand-logo-placeholder" style="background:#fff3e8;color:#e87722;">AUTONICS</div>
-        <span class="brand-item-name">Autonics</span>
-      </div>
-
-      <!-- 5 -->
-      <div class="brand-item">
-        <div class="brand-logo-placeholder" style="background:#eaf1fb;color:#1a3a6b;">ABB</div>
-        <span class="brand-item-name">ABB</span>
-      </div>
-
-      <!-- 6 -->
-      <div class="brand-item">
-        <div class="brand-logo-placeholder" style="background:#fff3e8;color:#e87722;">DELTA</div>
-        <span class="brand-item-name">Delta Electronics</span>
-      </div>
-
-      <!-- 7 -->
-      <div class="brand-item">
-        <div class="brand-logo-placeholder" style="background:#eaf1fb;color:#1e5fa8;">MITSUBISHI</div>
-        <span class="brand-item-name">Mitsubishi Electric</span>
-      </div>
-
-      <!-- 8 -->
-      <div class="brand-item">
-        <div class="brand-logo-placeholder" style="background:#fff3e8;color:#e87722;">OMRON</div>
-        <span class="brand-item-name">Omron</span>
-      </div>
-
-      <!-- 9 -->
-      <div class="brand-item">
-        <div class="brand-logo-placeholder" style="background:#eaf1fb;color:#1a3a6b;">DANFOSS</div>
-        <span class="brand-item-name">Danfoss</span>
-      </div>
-
-      <!-- 10 -->
-      <div class="brand-item">
-        <div class="brand-logo-placeholder" style="background:#fff3e8;color:#e87722;">YASKAWA</div>
-        <span class="brand-item-name">Yaskawa</span>
-      </div>
-
-      <!-- 11 -->
-      <div class="brand-item">
-        <div class="brand-logo-placeholder" style="background:#eaf1fb;color:#1e5fa8;">LEGRAND</div>
-        <span class="brand-item-name">Legrand</span>
-      </div>
-
-      <!-- 12 -->
-      <div class="brand-item">
-        <div class="brand-logo-placeholder" style="background:#fff3e8;color:#e87722;">PHOENIX</div>
-        <span class="brand-item-name">Phoenix Contact</span>
-      </div>
-
+    <div class="brands-section-wrapper" id="brandWrapper">
+      <img
+        src="our brands.jpg"
+        alt="Our Brand Partners — Schneider Electric, Allen-Bradley, Siemens, Autonics, ABB, Delta, Mitsubishi, Omron, Danfoss, Yaskawa, Legrand, Phoenix Contact"
+        class="brands-sheet"
+        id="brandsSheet"
+        draggable="false"
+      >
+      <!-- .interactive-logo-node elements are injected here by JS -->
     </div>
   </div>
 </section>
@@ -972,42 +827,29 @@
         <h2 class="section-title">Why Choose Us</h2>
         <div class="title-underline"></div>
         <p>At Device and Controls, we combine technical expertise, reliable product sourcing, and fast customer support to deliver dependable industrial automation solutions. We are committed to supplying genuine products, competitive pricing, and quick response services for industries, OEMs, panel builders, and automation professionals.</p>
-
         <div class="why-features">
           <div class="feature-item">
-            <div class="check-icon">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
+            <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
             <strong>Genuine Products</strong>
           </div>
           <div class="feature-item">
-            <div class="check-icon">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
+            <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
             <strong>Fast Quotation Support</strong>
           </div>
           <div class="feature-item">
-            <div class="check-icon">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
+            <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
             <strong>Trusted Automation Brands</strong>
           </div>
           <div class="feature-item">
-            <div class="check-icon">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
+            <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
             <strong>Ready Stock Availability</strong>
           </div>
           <div class="feature-item">
-            <div class="check-icon">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
+            <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
             <strong>Technical Assistance</strong>
           </div>
           <div class="feature-item">
-            <div class="check-icon">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
+            <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
             <strong>Quick Dispatch Across India</strong>
           </div>
         </div>
@@ -1041,8 +883,8 @@
     <div class="contact-grid">
       <div class="contact-brand">
         <div class="logo-text">
-          <span class="top" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.6rem;background:linear-gradient(90deg,#5ab4ff,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">DEVICE</span>
-          <span class="bottom" style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:0.9rem;letter-spacing:0.12em;color:var(--orange);">&amp; CONTROLS</span>
+          <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.6rem;background:linear-gradient(90deg,#5ab4ff,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">DEVICE</span>
+          <span style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:0.9rem;letter-spacing:0.12em;color:var(--orange);">&amp; CONTROLS</span>
         </div>
         <p class="contact-desc">Your trusted partner for genuine industrial automation products. We supply VFDs, PLCs, sensors, controllers, and more from the world's top brands — delivered fast across India.</p>
       </div>
@@ -1092,19 +934,21 @@
   </a>
 </div>
 
+<!-- ═══════════════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════════════ -->
 <script>
-  // ── NAV TOGGLE ──────────────────────────
+  /* ── NAV TOGGLE ──────────────────────────────────── */
   function toggleMenu() {
     document.getElementById('navLinks').classList.toggle('open');
   }
-
   document.querySelectorAll('.nav-links a').forEach(a => {
     a.addEventListener('click', () => {
       document.getElementById('navLinks').classList.remove('open');
     });
   });
 
-  // ── SLIDER ──────────────────────────────
+  /* ── HERO SLIDER ─────────────────────────────────── */
   let current = 0;
   const total = 3;
   let autoTimer;
@@ -1133,7 +977,7 @@
 
   resetAuto();
 
-  // Swipe support
+  // Swipe
   let touchStartX = 0;
   const sliderWrap = document.querySelector('.slider-wrap');
   sliderWrap.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
@@ -1141,6 +985,112 @@
     const dx = e.changedTouches[0].clientX - touchStartX;
     if (Math.abs(dx) > 40) moveSlide(dx < 0 ? 1 : -1);
   }, { passive: true });
+
+
+  /* ══════════════════════════════════════════════════════════════
+     INTERACTIVE BRAND LOGO OVERLAY
+     ══════════════════════════════════════════════════════════════
+
+     LOGO_GRID defines where each logo lives inside "our brands.jpg".
+     Values are percentages (0–100) of the image's rendered width/height.
+
+     Layout assumed: 4 columns × 3 rows  (12 logos total).
+
+     ┌─────────────────────────────────────────────────────────────┐
+     │  Adjust left / top / width / height to match your image.   │
+     │  You can open DevTools → inspect wrapper → note pixel dims, │
+     │  then convert to % = (px / totalPx) * 100.                 │
+     └─────────────────────────────────────────────────────────────┘
+
+     Each entry:
+       label  — accessible name (used for aria-label & title tooltip)
+       left   — % from left edge of image to cell left edge
+       top    — % from top edge of image to cell top edge
+       width  — % of image width this cell occupies
+       height — % of image height this cell occupies
+  ══════════════════════════════════════════════════════════════ */
+
+  const LOGO_GRID = [
+    /* ── Row 1 ── */
+    { label: 'Schneider Electric', left:  1.5, top:  3,   width: 22.5, height: 27 },
+    { label: 'Allen-Bradley',      left: 26,   top:  3,   width: 22.5, height: 27 },
+    { label: 'Siemens',            left: 50.5, top:  3,   width: 22.5, height: 27 },
+    { label: 'Autonics',           left: 75,   top:  3,   width: 23.5, height: 27 },
+
+    /* ── Row 2 ── */
+    { label: 'ABB',                left:  1.5, top: 36,   width: 22.5, height: 27 },
+    { label: 'Delta Electronics',  left: 26,   top: 36,   width: 22.5, height: 27 },
+    { label: 'Mitsubishi Electric',left: 50.5, top: 36,   width: 22.5, height: 27 },
+    { label: 'Omron',              left: 75,   top: 36,   width: 23.5, height: 27 },
+
+    /* ── Row 3 ── */
+    { label: 'Danfoss',            left:  1.5, top: 69,   width: 22.5, height: 27 },
+    { label: 'Yaskawa',            left: 26,   top: 69,   width: 22.5, height: 27 },
+    { label: 'Legrand',            left: 50.5, top: 69,   width: 22.5, height: 27 },
+    { label: 'Phoenix Contact',    left: 75,   top: 69,   width: 23.5, height: 27 },
+  ];
+
+  /* ── Build overlay nodes ─────────────────────────────────────── */
+  (function buildLogoOverlay() {
+    const wrapper = document.getElementById('brandWrapper');
+    const sheet   = document.getElementById('brandsSheet');
+
+    /**
+     * Position all nodes relative to the current rendered image size.
+     * Called once on load and again on every resize.
+     */
+    function positionNodes() {
+      const imgW = sheet.offsetWidth;
+      const imgH = sheet.offsetHeight;
+
+      // Sync wrapper height so absolute children don't escape
+      wrapper.style.height = imgH + 'px';
+
+      document.querySelectorAll('.interactive-logo-node').forEach((node, i) => {
+        const cell = LOGO_GRID[i];
+        node.style.left   = (cell.left   / 100 * imgW) + 'px';
+        node.style.top    = (cell.top    / 100 * imgH) + 'px';
+        node.style.width  = (cell.width  / 100 * imgW) + 'px';
+        node.style.height = (cell.height / 100 * imgH) + 'px';
+      });
+    }
+
+    /** Create a single transparent hover node */
+    function createNode(cell) {
+      const node = document.createElement('div');
+      node.className = 'interactive-logo-node';
+      node.setAttribute('role', 'button');
+      node.setAttribute('tabindex', '0');
+      node.setAttribute('aria-label', cell.label);
+      node.title = cell.label;
+
+      // Keyboard accessibility — lift on focus too
+      node.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') node.classList.toggle('active');
+      });
+
+      wrapper.appendChild(node);
+      return node;
+    }
+
+    // Inject all nodes
+    LOGO_GRID.forEach(cell => createNode(cell));
+
+    // Position immediately if image is already loaded (cached)
+    if (sheet.complete && sheet.naturalWidth) {
+      positionNodes();
+    } else {
+      sheet.addEventListener('load', positionNodes);
+    }
+
+    // Re-position on every resize (debounced for performance)
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(positionNodes, 60);
+    });
+  })();
+
 </script>
 </body>
 </html>
