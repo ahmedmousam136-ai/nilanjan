@@ -57,47 +57,15 @@
   .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
     text-decoration: none;
   }
 
-  .logo-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 10px;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
-  .logo-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.1;
-  }
-
-  .logo-text .top {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 1.45rem;
-    letter-spacing: 0.06em;
-    background: linear-gradient(90deg, #5ab4ff, var(--white));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .logo-text .bottom {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 0.12em;
-    color: var(--orange);
+  /* ── Navbar logo image ── */
+  .navbar-logo {
+    height: 45px;
+    width: auto;
+    border-radius: 4px;
+    display: block;
   }
 
   .nav-links {
@@ -758,15 +726,9 @@
 <!-- ─── HEADER ─────────────────────────────────── -->
 <header>
   <nav>
+    <!-- Logo: single image containing gear + text, no duplicate text tags -->
     <a href="#home" class="logo">
-      <div class="logo-icon">
-        <!-- ✅ UPDATED: exact filename from GitHub -->
-        <img src="device control logo.jpeg" alt="Device & Controls Logo">
-      </div>
-      <div class="logo-text">
-        <span class="top">DEVICE</span>
-        <span class="bottom">&amp; CONTROLS</span>
-      </div>
+      <img src="device control logo.jpeg" alt="Device & Controls Logo" class="navbar-logo">
     </a>
 
     <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -797,7 +759,6 @@
     <div class="slider-wrap">
       <div class="slides" id="slides">
 
-        <!-- ✅ UPDATED: exact filenames from GitHub (spaces included) -->
         <div class="slide">
           <img src="panel meter.jpeg" alt="Panel Meter">
           <div class="slide-label">
@@ -853,7 +814,6 @@
     </div>
 
     <div class="brands-image-wrap">
-      <!-- ✅ UPDATED: exact filename from GitHub -->
       <img src="our brands.jpeg" alt="Our Brand Partners" class="brand-matrix-img">
     </div>
   </div>
