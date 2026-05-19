@@ -450,26 +450,6 @@
     transform: scale(1.06);
   }
 
-  /* SVG text-badge fallback (for brands without Wikimedia assets) */
-  .brand-card .brand-svg-badge {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    filter: grayscale(40%) opacity(0.85);
-    transition: filter 0.28s ease, transform 0.28s ease;
-  }
-  .brand-card:hover .brand-svg-badge {
-    filter: grayscale(0%) opacity(1);
-    transform: scale(1.06);
-  }
-  .brand-card .brand-svg-badge svg {
-    max-width: 100%;
-    max-height: 52px;
-    height: auto;
-  }
-
   /* Fallback text label */
   .brand-card .brand-name {
     font-family: 'Barlow Condensed', sans-serif;
@@ -496,7 +476,6 @@
     .brands-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .brand-card { padding: 22px 12px 18px; }
     .brand-card .brand-logo { height: 46px; }
-    .brand-card .brand-svg-badge { height: 46px; }
   }
 
   /* ═══════════════════════════════
@@ -831,11 +810,7 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════
-     OUR BRANDS — Logo Cards
-     Strategy:
-       • Wikimedia Commons SVGs → raw upload.wikimedia.org URL (no /thumb/ path needed)
-       • Brands without Wikimedia assets → inline SVG text badge (always renders, no external dep)
-       • onerror on every <img> hides it gracefully; brand-name text label always shown below
+     OUR BRANDS — Local Image Cards
 ═══════════════════════════════════════════════ -->
 <section id="brands">
   <div class="section-inner">
@@ -848,216 +823,123 @@
 
     <div class="brands-grid">
 
-      <!-- 1. Siemens — working, keep as-is -->
+      <!-- 1. Siemens -->
       <div class="brand-card">
-        <img
-          class="brand-logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Siemens-logo.svg"
-          alt="Siemens"
-          onerror="this.style.display='none'">
+        <img class="brand-logo" src="Siemens.png" alt="Siemens" onerror="this.style.display='none'">
         <span class="brand-name">Siemens</span>
       </div>
 
       <!-- 2. Schneider Electric -->
       <div class="brand-card">
-        <img
-          class="brand-logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/9/97/Schneider_Electric_2007.svg"
-          alt="Schneider Electric"
-          onerror="this.style.display='none'">
+        <img class="brand-logo" src="Schneider.png" alt="Schneider Electric" onerror="this.style.display='none'">
         <span class="brand-name">Schneider Electric</span>
       </div>
 
-      <!-- 3. Allen-Bradley / Rockwell Automation -->
+      <!-- 3. Allen-Bradley -->
       <div class="brand-card">
-        <img
-          class="brand-logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Allen-Bradley_logo.svg"
-          alt="Allen-Bradley"
-          onerror="this.style.display='none'">
+        <img class="brand-logo" src="Allen_Bradley.png" alt="Allen-Bradley" onerror="this.style.display='none'">
         <span class="brand-name">Allen-Bradley</span>
       </div>
 
       <!-- 4. Omron -->
       <div class="brand-card">
-        <img
-          class="brand-logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/6/6d/OMRON_Logo.svg"
-          alt="Omron"
-          onerror="this.style.display='none'">
+        <img class="brand-logo" src="Omron.png" alt="Omron" onerror="this.style.display='none'">
         <span class="brand-name">Omron</span>
       </div>
 
-      <!-- 5. Larsen & Toubro — inline SVG badge (no stable Wikimedia asset) -->
+      <!-- 5. Larsen & Toubro -->
       <div class="brand-card">
-        <div class="brand-svg-badge" aria-label="Larsen & Toubro">
-          <svg viewBox="0 0 160 56" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="10" width="36" height="36" rx="4" fill="#e31e24"/>
-            <text x="20" y="34" font-family="Arial,sans-serif" font-size="18" font-weight="900" fill="#ffffff" text-anchor="middle">L&amp;T</text>
-            <text x="52" y="29" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#1a3a6b">LARSEN &amp;</text>
-            <text x="52" y="46" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#1a3a6b">TOUBRO</text>
-          </svg>
-        </div>
+        <img class="brand-logo" src="Larsen_Toubro.png" alt="Larsen &amp; Toubro" onerror="this.style.display='none'">
         <span class="brand-name">Larsen &amp; Toubro</span>
       </div>
 
       <!-- 6. Eaton -->
       <div class="brand-card">
-        <img
-          class="brand-logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Eaton_Corporation_logo.svg/320px-Eaton_Corporation_logo.svg.png"
-          alt="Eaton"
-          onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/b/b7/Eaton_Corporation_logo.svg';this.onerror=function(){this.style.display='none'}">
+        <img class="brand-logo" src="Eaton.png" alt="Eaton" onerror="this.style.display='none'">
         <span class="brand-name">Eaton</span>
       </div>
 
       <!-- 7. Phoenix Contact -->
       <div class="brand-card">
-        <img
-          class="brand-logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Phoenix_Contact_Logo.svg"
-          alt="Phoenix Contact"
-          onerror="this.style.display='none'">
+        <img class="brand-logo" src="Phoenix_Contact.png" alt="Phoenix Contact" onerror="this.style.display='none'">
         <span class="brand-name">Phoenix Contact</span>
       </div>
 
       <!-- 8. Pepperl+Fuchs -->
       <div class="brand-card">
-        <img
-          class="brand-logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Logo_Pepperl%2BFuchs.svg"
-          alt="Pepperl+Fuchs"
-          onerror="this.style.display='none'">
+        <img class="brand-logo" src="Pepperl_Fuchs.png" alt="Pepperl+Fuchs" onerror="this.style.display='none'">
         <span class="brand-name">Pepperl+Fuchs</span>
       </div>
 
-      <!-- 9. ABB — working, keep as-is -->
+      <!-- 9. ABB -->
       <div class="brand-card">
-        <img
-          class="brand-logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/0/00/ABB_logo.svg"
-          alt="ABB"
-          onerror="this.style.display='none'">
+        <img class="brand-logo" src="ABB.png" alt="ABB" onerror="this.style.display='none'">
         <span class="brand-name">ABB</span>
       </div>
 
       <!-- 10. Yaskawa -->
       <div class="brand-card">
-        <img
-          class="brand-logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Yaskawa_logo.svg"
-          alt="Yaskawa"
-          onerror="this.style.display='none'">
+        <img class="brand-logo" src="Yaskawa.png" alt="Yaskawa" onerror="this.style.display='none'">
         <span class="brand-name">Yaskawa</span>
       </div>
 
-      <!-- 11. Fuji Electric — inline SVG badge -->
+      <!-- 11. Fuji Electric -->
       <div class="brand-card">
-        <div class="brand-svg-badge" aria-label="Fuji Electric">
-          <svg viewBox="0 0 160 52" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="8" width="40" height="36" rx="3" fill="#003087"/>
-            <text x="22" y="33" font-family="Arial,sans-serif" font-size="20" font-weight="900" fill="#ffffff" text-anchor="middle">F</text>
-            <text x="52" y="27" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#003087">FUJI</text>
-            <text x="52" y="44" font-family="Arial,sans-serif" font-size="11" font-weight="600" fill="#555555">ELECTRIC</text>
-          </svg>
-        </div>
+        <img class="brand-logo" src="Fuji_Electric.png" alt="Fuji Electric" onerror="this.style.display='none'">
         <span class="brand-name">Fuji Electric</span>
       </div>
 
-      <!-- 12. Delta Electronics -->
+      <!-- 12. Delta -->
       <div class="brand-card">
-        <img
-          class="brand-logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Delta_Electronics_logo.svg"
-          alt="Delta Electronics"
-          onerror="this.style.display='none'">
+        <img class="brand-logo" src="Delta.png" alt="Delta Electronics" onerror="this.style.display='none'">
         <span class="brand-name">Delta</span>
       </div>
 
-      <!-- 13. Turck — inline SVG badge -->
+      <!-- 13. Turck -->
       <div class="brand-card">
-        <div class="brand-svg-badge" aria-label="Turck">
-          <svg viewBox="0 0 140 52" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="8" width="136" height="36" rx="4" fill="#e20025"/>
-            <text x="70" y="34" font-family="Arial Black,Arial,sans-serif" font-size="22" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="3">TURCK</text>
-          </svg>
-        </div>
+        <img class="brand-logo" src="Turck.png" alt="Turck" onerror="this.style.display='none'">
         <span class="brand-name">Turck</span>
       </div>
 
-      <!-- 14. Autonics — inline SVG badge -->
+      <!-- 14. Autonics -->
       <div class="brand-card">
-        <div class="brand-svg-badge" aria-label="Autonics">
-          <svg viewBox="0 0 160 52" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="35" font-family="Arial Black,Arial,sans-serif" font-size="20" font-weight="900" fill="#0068b7" text-anchor="middle" letter-spacing="1">AUTONICS</text>
-            <rect x="18" y="40" width="124" height="3" rx="1.5" fill="#e87722"/>
-          </svg>
-        </div>
+        <img class="brand-logo" src="Autonics.png" alt="Autonics" onerror="this.style.display='none'">
         <span class="brand-name">Autonics</span>
       </div>
 
       <!-- 15. SICK -->
       <div class="brand-card">
-        <img
-          class="brand-logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/b/b0/SICK_AG_Logo.svg"
-          alt="SICK"
-          onerror="this.style.display='none'">
+        <img class="brand-logo" src="SICK.png" alt="SICK" onerror="this.style.display='none'">
         <span class="brand-name">SICK</span>
       </div>
 
       <!-- 16. Baumer -->
       <div class="brand-card">
-        <img
-          class="brand-logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/5/56/Baumer_Logo.svg"
-          alt="Baumer"
-          onerror="this.style.display='none'">
+        <img class="brand-logo" src="Baumer.png" alt="Baumer" onerror="this.style.display='none'">
         <span class="brand-name">Baumer</span>
       </div>
 
-      <!-- 17. Mean Well — inline SVG badge -->
+      <!-- 17. Mean Well -->
       <div class="brand-card">
-        <div class="brand-svg-badge" aria-label="Mean Well">
-          <svg viewBox="0 0 160 52" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="24" font-family="Arial Black,Arial,sans-serif" font-size="16" font-weight="900" fill="#c00000" text-anchor="middle" letter-spacing="1">MEAN WELL</text>
-            <text x="80" y="43" font-family="Arial,sans-serif" font-size="10" font-weight="600" fill="#444444" text-anchor="middle" letter-spacing="2">POWER SUPPLIES</text>
-          </svg>
-        </div>
+        <img class="brand-logo" src="Mean_Well.png" alt="Mean Well" onerror="this.style.display='none'">
         <span class="brand-name">Mean Well</span>
       </div>
 
-      <!-- 18. Luminous — inline SVG badge -->
+      <!-- 18. Luminous -->
       <div class="brand-card">
-        <div class="brand-svg-badge" aria-label="Luminous">
-          <svg viewBox="0 0 160 52" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="18" cy="26" r="16" fill="#ff6600"/>
-            <polygon points="18,10 22,22 18,18 14,22" fill="#ffffff"/>
-            <text x="42" y="31" font-family="Arial Black,Arial,sans-serif" font-size="18" font-weight="900" fill="#1a3a6b">LUMINOUS</text>
-          </svg>
-        </div>
+        <img class="brand-logo" src="Luminous.png" alt="Luminous" onerror="this.style.display='none'">
         <span class="brand-name">Luminous</span>
       </div>
 
-      <!-- 19. Selec — inline SVG badge -->
+      <!-- 19. Selec -->
       <div class="brand-card">
-        <div class="brand-svg-badge" aria-label="Selec">
-          <svg viewBox="0 0 140 52" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="10" width="136" height="32" rx="5" fill="#0047ab"/>
-            <text x="70" y="32" font-family="Arial Black,Arial,sans-serif" font-size="20" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="4">SELEC</text>
-          </svg>
-        </div>
+        <img class="brand-logo" src="Selec.png" alt="Selec" onerror="this.style.display='none'">
         <span class="brand-name">Selec</span>
       </div>
 
-      <!-- 20. Janatics — inline SVG badge -->
+      <!-- 20. Janatics -->
       <div class="brand-card">
-        <div class="brand-svg-badge" aria-label="Janatics">
-          <svg viewBox="0 0 160 52" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="10" width="156" height="32" rx="5" fill="#1a3a6b"/>
-            <text x="80" y="32" font-family="Arial Black,Arial,sans-serif" font-size="17" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="2">JANATICS</text>
-          </svg>
-        </div>
+        <img class="brand-logo" src="Janatics.png" alt="Janatics" onerror="this.style.display='none'">
         <span class="brand-name">Janatics</span>
       </div>
 
