@@ -15,11 +15,9 @@
     --dark: #0d1f3c;
     --light: #f4f7fb;
     --white: #ffffff;
-    --grey: #e8edf5;
     --text: #2c3e50;
     --text-light: #546e7a;
     --shadow: 0 4px 24px rgba(26,58,107,0.10);
-    --shadow-strong: 0 8px 40px rgba(26,58,107,0.18);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,18 +29,16 @@
     overflow-x: hidden;
   }
 
-  /* ═══════════════════════════════
+  /* ══════════════════════════════
      HEADER / NAV
-  ═══════════════════════════════ */
+  ══════════════════════════════ */
   header {
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 1000 !important;
-    background: var(--dark) !important;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.25) !important;
-    height: auto !important;
-    min-height: unset !important;
-    padding: 15px 0 !important;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--dark);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+    padding: 15px 0;
   }
 
   nav {
@@ -55,25 +51,18 @@
   }
 
   .logo {
-    display: flex !important;
-    align-items: center !important;
-    width: auto !important;
-    max-width: none !important;
-    background: none !important;
-    padding: 0 !important;
-    text-decoration: none !important;
-    flex-shrink: 0 !important;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
   }
 
   .navbar-logo {
-    height: 65px !important;
-    width: auto !important;
-    max-width: none !important;
-    object-fit: contain !important;
-    display: block !important;
+    height: 65px;
+    width: auto;
+    object-fit: contain;
+    display: block;
     border-radius: 4px;
-    background: none !important;
-    box-shadow: none !important;
   }
 
   .nav-links {
@@ -114,6 +103,8 @@
     gap: 5px;
     cursor: pointer;
     padding: 6px;
+    background: none;
+    border: none;
   }
   .hamburger span {
     display: block;
@@ -123,9 +114,9 @@
     transition: all 0.3s;
   }
 
-  /* ═══════════════════════════════
-     HERO SLIDER
-  ═══════════════════════════════ */
+  /* ══════════════════════════════
+     HERO SECTION
+  ══════════════════════════════ */
   #home {
     position: relative;
     background: linear-gradient(160deg, var(--dark) 0%, #0f2d56 50%, #1a3a6b 100%);
@@ -187,7 +178,7 @@
     margin-bottom: 22px;
   }
 
-  .hero-badge span {
+  .hero-badge .pulse {
     width: 6px; height: 6px;
     background: var(--orange);
     border-radius: 50%;
@@ -197,7 +188,7 @@
 
   @keyframes pulse-dot {
     0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.7); }
+    50%       { opacity: 0.4; transform: scale(0.7); }
   }
 
   .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
@@ -237,13 +228,13 @@
   }
   .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
 
-  /* Slider */
+  /* ── Slider ── */
   .slider-wrap {
     position: relative;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    background: #fff;
+    background: var(--white);
     aspect-ratio: 1 / 1;
     max-width: 420px;
     width: 100%;
@@ -332,9 +323,9 @@
   }
   .dot.active { background: var(--orange); transform: scale(1.35); }
 
-  /* ═══════════════════════════════
-     SECTION COMMONS
-  ═══════════════════════════════ */
+  /* ══════════════════════════════
+     SHARED SECTION STYLES
+  ══════════════════════════════ */
   section { padding: 90px 32px; }
   .section-inner { max-width: 1280px; margin: 0 auto; }
 
@@ -346,6 +337,7 @@
     text-transform: uppercase;
     color: var(--orange);
     margin-bottom: 10px;
+    display: block;
   }
 
   .section-title {
@@ -365,9 +357,9 @@
     margin-bottom: 40px;
   }
 
-  /* ═══════════════════════════════
-     OUR BRANDS — LOGO CARDS
-  ═══════════════════════════════ */
+  /* ══════════════════════════════
+     OUR BRANDS
+  ══════════════════════════════ */
   #brands {
     background: var(--light);
     position: relative;
@@ -384,21 +376,22 @@
 
   .brands-header {
     text-align: center;
-    margin-bottom: 0;
   }
-  .brands-header .section-label { display: block; }
-  .brands-header .title-underline { margin: 0 auto 48px; }
+  .brands-header .title-underline {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-  /* ── GRID ── */
+  /* ── Grid ── */
   .brands-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
   }
 
-  /* ── INDIVIDUAL CARD ── */
+  /* ── Card — each card lifts independently on hover ── */
   .brand-card {
-    background: #ffffff;
+    background: var(--white);
     border: 1.5px solid #e4eaf3;
     border-radius: 14px;
     padding: 28px 18px 22px;
@@ -407,24 +400,26 @@
     align-items: center;
     justify-content: center;
     gap: 14px;
-    cursor: pointer;
+    /* Isolated lift: transform applies only to this element */
     transition:
-      transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
-      box-shadow 0.28s ease,
+      transform    0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow   0.28s ease,
       border-color 0.22s ease;
     will-change: transform;
     position: relative;
     overflow: hidden;
   }
 
-  .brand-card::before {
+  /* Subtle warm wash on hover — pseudo element so it never affects layout */
+  .brand-card::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(232,119,34,0.05) 0%, transparent 60%);
+    background: linear-gradient(135deg, rgba(232,119,34,0.06) 0%, transparent 60%);
     opacity: 0;
-    transition: opacity 0.28s;
+    transition: opacity 0.28s ease;
     border-radius: inherit;
+    pointer-events: none;
   }
 
   .brand-card:hover {
@@ -433,54 +428,50 @@
     border-color: var(--orange-light);
   }
 
-  .brand-card:hover::before { opacity: 1; }
+  .brand-card:hover::after { opacity: 1; }
 
-  /* Logo image */
-  .brand-card .brand-logo {
+  /* ── Logo image ── */
+  .brand-logo {
     width: 100%;
-    height: 60px;
+    height: 64px;
     object-fit: contain;
-    filter: grayscale(40%) opacity(0.85);
-    transition: filter 0.28s ease, transform 0.28s ease;
     display: block;
+    filter: grayscale(35%) opacity(0.82);
+    transition: filter 0.28s ease, transform 0.28s ease;
   }
 
   .brand-card:hover .brand-logo {
     filter: grayscale(0%) opacity(1);
-    transform: scale(1.06);
+    transform: scale(1.07);
   }
 
-  /* Fallback text label */
-  .brand-card .brand-name {
+  /* ── Text label ── */
+  .brand-name {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text-light);
     text-align: center;
     line-height: 1.3;
-    transition: color 0.22s;
+    transition: color 0.22s ease;
   }
 
   .brand-card:hover .brand-name { color: var(--orange); }
 
-  /* Responsive grid breakpoints */
-  @media (max-width: 1100px) {
-    .brands-grid { grid-template-columns: repeat(4, 1fr); }
-  }
-  @media (max-width: 860px) {
-    .brands-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  }
-  @media (max-width: 560px) {
+  /* ── Responsive grid ── */
+  @media (max-width: 1100px) { .brands-grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 860px)  { .brands-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; } }
+  @media (max-width: 560px)  {
     .brands-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .brand-card { padding: 22px 12px 18px; }
-    .brand-card .brand-logo { height: 46px; }
+    .brand-card  { padding: 20px 12px 16px; }
+    .brand-logo  { height: 48px; }
   }
 
-  /* ═══════════════════════════════
+  /* ══════════════════════════════
      WHY CHOOSE US
-  ═══════════════════════════════ */
+  ══════════════════════════════ */
   #why {
     background: var(--white);
     position: relative;
@@ -549,11 +540,7 @@
     letter-spacing: 0.02em;
   }
 
-  .why-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
+  .why-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
   .stat-card {
     background: var(--light);
@@ -569,8 +556,7 @@
   .stat-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
+    top: 0; left: 0; right: 0; height: 3px;
     background: linear-gradient(90deg, var(--orange), var(--orange-light));
   }
   .stat-card:nth-child(2)::before { background: linear-gradient(90deg, var(--blue-mid), var(--blue-light)); }
@@ -588,9 +574,9 @@
   .stat-number em { color: var(--orange); font-style: normal; }
   .stat-label { font-size: 0.85rem; color: var(--text-light); font-weight: 500; letter-spacing: 0.03em; }
 
-  /* ═══════════════════════════════
-     CONTACT / FOOTER
-  ═══════════════════════════════ */
+  /* ══════════════════════════════
+     FOOTER / CONTACT
+  ══════════════════════════════ */
   #contact {
     background: var(--dark);
     color: var(--white);
@@ -644,9 +630,9 @@
   }
   .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
 
-  /* ═══════════════════════════════
+  /* ══════════════════════════════
      WHATSAPP FLOAT
-  ═══════════════════════════════ */
+  ══════════════════════════════ */
   .wa-float {
     position: fixed;
     bottom: 28px; right: 28px;
@@ -687,12 +673,12 @@
   .wa-btn svg { width: 32px; height: 32px; fill: white; }
   @keyframes wa-pop {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.06); }
+    50%       { transform: scale(1.06); }
   }
 
-  /* ═══════════════════════════════
+  /* ══════════════════════════════
      RESPONSIVE — GLOBAL
-  ═══════════════════════════════ */
+  ══════════════════════════════ */
   @media (max-width: 1024px) {
     .hero-inner { grid-template-columns: 1fr; padding: 56px 32px; gap: 48px; }
     .slider-wrap { max-width: 380px; }
@@ -735,28 +721,31 @@
 </head>
 <body>
 
-<!-- ─── HEADER ─────────────────────────────────── -->
+<!-- ─── HEADER ─────────────────────────────── -->
 <header>
   <nav>
     <a href="#home" class="logo">
       <img src="device control logo.jpeg" alt="Device & Controls Logo" class="navbar-logo">
     </a>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
       <span></span><span></span><span></span>
-    </div>
+    </button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
-      <li><a href="#brands">Product</a></li>
+      <li><a href="#brands">Products</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 </header>
 
-<!-- ─── HERO / SLIDER ──────────────────────────── -->
+<!-- ─── HERO ───────────────────────────────── -->
 <section id="home">
   <div class="hero-inner">
     <div class="hero-copy">
-      <div class="hero-badge"><span></span> Trusted Industrial Automation Partner</div>
+      <div class="hero-badge">
+        <span class="pulse"></span>
+        Trusted Industrial Automation Partner
+      </div>
       <h1>Industrial <span>Automation</span><br>Products &amp; Solutions</h1>
       <p>Device &amp; Controls is your one-stop supplier of genuine industrial automation products — VFDs, PLCs, sensors, and more — from the world's most trusted brands, delivered fast across India.</p>
       <div class="hero-cta">
@@ -767,6 +756,7 @@
 
     <div class="slider-wrap">
       <div class="slides" id="slides">
+
         <div class="slide">
           <img src="panel meter.jpeg" alt="Panel Meter">
           <div class="slide-label">
@@ -775,6 +765,7 @@
             <p>Digital Indicator Panel</p>
           </div>
         </div>
+
         <div class="slide">
           <img src="vfd.jpeg" alt="VFD Drive">
           <div class="slide-label">
@@ -783,6 +774,7 @@
             <p>1.5kW – 2HP | 380/415 V~</p>
           </div>
         </div>
+
         <div class="slide">
           <img src="vfd2.jpeg" alt="VFD 2">
           <div class="slide-label">
@@ -791,155 +783,134 @@
             <p>Industrial Variable Speed Drive</p>
           </div>
         </div>
-      </div>
 
-      <button class="slider-btn prev" onclick="moveSlide(-1)" aria-label="Previous">
+      </div><!-- /.slides -->
+
+      <button class="slider-btn prev" onclick="moveSlide(-1)" aria-label="Previous slide">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
       </button>
-      <button class="slider-btn next" onclick="moveSlide(1)" aria-label="Next">
+      <button class="slider-btn next" onclick="moveSlide(1)" aria-label="Next slide">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </button>
 
       <div class="slider-dots" id="dots">
-        <button class="dot active" onclick="goToSlide(0)"></button>
-        <button class="dot" onclick="goToSlide(1)"></button>
-        <button class="dot" onclick="goToSlide(2)"></button>
+        <button class="dot active" onclick="goToSlide(0)" aria-label="Slide 1"></button>
+        <button class="dot"        onclick="goToSlide(1)" aria-label="Slide 2"></button>
+        <button class="dot"        onclick="goToSlide(2)" aria-label="Slide 3"></button>
       </div>
-    </div>
+    </div><!-- /.slider-wrap -->
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     OUR BRANDS — Local Image Cards
-═══════════════════════════════════════════════ -->
+<!-- ─── OUR BRANDS ─────────────────────────── -->
 <section id="brands">
   <div class="section-inner">
 
     <div class="brands-header">
-      <div class="section-label">Trusted Partners</div>
+      <span class="section-label">Trusted Partners</span>
       <h2 class="section-title">OUR BRANDS</h2>
       <div class="title-underline"></div>
     </div>
 
     <div class="brands-grid">
 
-      <!-- 1. Siemens -->
       <div class="brand-card">
-        <img class="brand-logo" src="Siemens.png" alt="Siemens" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Siemens.png" alt="Siemens">
         <span class="brand-name">Siemens</span>
       </div>
 
-      <!-- 2. Schneider Electric -->
       <div class="brand-card">
-        <img class="brand-logo" src="Schneider.png" alt="Schneider Electric" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Schneider.png" alt="Schneider Electric">
         <span class="brand-name">Schneider Electric</span>
       </div>
 
-      <!-- 3. Allen-Bradley -->
       <div class="brand-card">
-        <img class="brand-logo" src="Allen_Bradley.png" alt="Allen-Bradley" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Allen_Bradley.png" alt="Allen-Bradley">
         <span class="brand-name">Allen-Bradley</span>
       </div>
 
-      <!-- 4. Omron -->
       <div class="brand-card">
-        <img class="brand-logo" src="Omron.png" alt="Omron" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Omron.png" alt="Omron">
         <span class="brand-name">Omron</span>
       </div>
 
-      <!-- 5. Larsen & Toubro -->
       <div class="brand-card">
-        <img class="brand-logo" src="Larsen_Toubro.png" alt="Larsen &amp; Toubro" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Larsen_Toubro.png" alt="Larsen &amp; Toubro">
         <span class="brand-name">Larsen &amp; Toubro</span>
       </div>
 
-      <!-- 6. Eaton -->
       <div class="brand-card">
-        <img class="brand-logo" src="Eaton.png" alt="Eaton" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Eaton.png" alt="Eaton">
         <span class="brand-name">Eaton</span>
       </div>
 
-      <!-- 7. Phoenix Contact -->
       <div class="brand-card">
-        <img class="brand-logo" src="Phoenix_Contact.png" alt="Phoenix Contact" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Phoenix_Contact.png" alt="Phoenix Contact">
         <span class="brand-name">Phoenix Contact</span>
       </div>
 
-      <!-- 8. Pepperl+Fuchs -->
       <div class="brand-card">
-        <img class="brand-logo" src="Pepperl_Fuchs.png" alt="Pepperl+Fuchs" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Pepperl_Fuchs.png" alt="Pepperl+Fuchs">
         <span class="brand-name">Pepperl+Fuchs</span>
       </div>
 
-      <!-- 9. ABB -->
       <div class="brand-card">
-        <img class="brand-logo" src="ABB.png" alt="ABB" onerror="this.style.display='none'">
+        <img class="brand-logo" src="ABB.png" alt="ABB">
         <span class="brand-name">ABB</span>
       </div>
 
-      <!-- 10. Yaskawa -->
       <div class="brand-card">
-        <img class="brand-logo" src="Yaskawa.png" alt="Yaskawa" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Yaskawa.png" alt="Yaskawa">
         <span class="brand-name">Yaskawa</span>
       </div>
 
-      <!-- 11. Fuji Electric -->
       <div class="brand-card">
-        <img class="brand-logo" src="Fuji_Electric.png" alt="Fuji Electric" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Fuji_Electric.png" alt="Fuji Electric">
         <span class="brand-name">Fuji Electric</span>
       </div>
 
-      <!-- 12. Delta -->
       <div class="brand-card">
-        <img class="brand-logo" src="Delta.png" alt="Delta Electronics" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Delta.png" alt="Delta">
         <span class="brand-name">Delta</span>
       </div>
 
-      <!-- 13. Turck -->
       <div class="brand-card">
-        <img class="brand-logo" src="Turck.png" alt="Turck" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Turck.png" alt="Turck">
         <span class="brand-name">Turck</span>
       </div>
 
-      <!-- 14. Autonics -->
       <div class="brand-card">
-        <img class="brand-logo" src="Autonics.png" alt="Autonics" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Autonics.png" alt="Autonics">
         <span class="brand-name">Autonics</span>
       </div>
 
-      <!-- 15. SICK -->
       <div class="brand-card">
-        <img class="brand-logo" src="SICK.png" alt="SICK" onerror="this.style.display='none'">
+        <img class="brand-logo" src="SICK.png" alt="SICK">
         <span class="brand-name">SICK</span>
       </div>
 
-      <!-- 16. Baumer -->
       <div class="brand-card">
-        <img class="brand-logo" src="Baumer.png" alt="Baumer" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Baumer.png" alt="Baumer">
         <span class="brand-name">Baumer</span>
       </div>
 
-      <!-- 17. Mean Well -->
       <div class="brand-card">
-        <img class="brand-logo" src="Mean_Well.png" alt="Mean Well" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Mean_Well.png" alt="Mean Well">
         <span class="brand-name">Mean Well</span>
       </div>
 
-      <!-- 18. Luminous -->
       <div class="brand-card">
-        <img class="brand-logo" src="Luminous.png" alt="Luminous" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Luminous.png" alt="Luminous">
         <span class="brand-name">Luminous</span>
       </div>
 
-      <!-- 19. Selec -->
       <div class="brand-card">
-        <img class="brand-logo" src="Selec.png" alt="Selec" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Selec.png" alt="Selec">
         <span class="brand-name">Selec</span>
       </div>
 
-      <!-- 20. Janatics -->
       <div class="brand-card">
-        <img class="brand-logo" src="Janatics.png" alt="Janatics" onerror="this.style.display='none'">
+        <img class="brand-logo" src="Janatics.png" alt="Janatics">
         <span class="brand-name">Janatics</span>
       </div>
 
@@ -947,12 +918,13 @@
   </div>
 </section>
 
-<!-- ─── WHY CHOOSE US ──────────────────────────── -->
+<!-- ─── WHY CHOOSE US ─────────────────────── -->
 <section id="why">
   <div class="section-inner">
     <div class="why-grid">
+
       <div class="why-copy">
-        <div class="section-label">Our Advantage</div>
+        <span class="section-label">Our Advantage</span>
         <h2 class="section-title">Why Choose Us</h2>
         <div class="title-underline"></div>
         <p>At Device and Controls, we combine technical expertise, reliable product sourcing, and fast customer support to deliver dependable industrial automation solutions. We are committed to supplying genuine products, competitive pricing, and quick response services for industries, OEMs, panel builders, and automation professionals.</p>
@@ -1002,18 +974,20 @@
           <div class="stat-label">India Delivery</div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ─── CONTACT / FOOTER ───────────────────────── -->
+<!-- ─── FOOTER / CONTACT ───────────────────── -->
 <footer id="contact">
   <div class="section-inner">
     <div class="contact-grid">
+
       <div class="contact-brand">
-        <div class="logo-text">
+        <div>
           <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.6rem;background:linear-gradient(90deg,#5ab4ff,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">DEVICE</span>
-          <span style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:0.9rem;letter-spacing:0.12em;color:var(--orange);">&amp; CONTROLS</span>
+          <span style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:0.9rem;letter-spacing:0.12em;color:var(--orange);"> &amp; CONTROLS</span>
         </div>
         <p class="contact-desc">Your trusted partner for genuine industrial automation products. We supply VFDs, PLCs, sensors, controllers, and more from the world's top brands — delivered fast across India.</p>
       </div>
@@ -1046,7 +1020,8 @@
           </li>
         </ul>
       </div>
-    </div>
+
+    </div><!-- /.contact-grid -->
 
     <div class="footer-bottom">
       <p>&copy; 2025 Device &amp; Controls. All rights reserved.</p>
@@ -1055,36 +1030,40 @@
   </div>
 </footer>
 
-<!-- ─── WHATSAPP FLOAT ─────────────────────────── -->
+<!-- ─── WHATSAPP FLOAT ─────────────────────── -->
 <div class="wa-float">
   <div class="wa-tooltip">💬 Chat on WhatsApp</div>
-  <a href="https://wa.me/91XXXXXXXXXX?text=Hello%20Device%20%26%20Controls!%20I%20need%20a%20quotation%20for%20industrial%20automation%20products." class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.433.648 4.71 1.783 6.68L2 30l7.522-1.745A13.93 13.93 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.5a11.44 11.44 0 01-5.824-1.596l-.417-.248-4.463 1.035 1.057-4.338-.272-.432A11.44 11.44 0 014.5 16C4.5 9.649 9.649 4.5 16 4.5S27.5 9.649 27.5 16 22.351 27.5 16 27.5zm6.29-8.47c-.345-.172-2.04-1.006-2.356-1.12-.316-.115-.547-.172-.777.172-.23.345-.89 1.12-1.091 1.35-.2.23-.402.258-.747.086-.345-.172-1.456-.537-2.773-1.711-1.025-.915-1.717-2.044-1.918-2.389-.2-.345-.021-.531.151-.703.155-.155.345-.402.517-.603.172-.2.23-.345.345-.575.115-.23.057-.431-.029-.603-.086-.172-.777-1.874-1.065-2.565-.28-.673-.564-.582-.777-.592-.2-.01-.43-.012-.66-.012-.23 0-.603.086-.92.431-.316.345-1.205 1.178-1.205 2.872 0 1.694 1.234 3.332 1.406 3.562.172.23 2.428 3.71 5.882 5.203.822.355 1.463.567 1.963.726.824.262 1.574.225 2.168.137.661-.099 2.04-.834 2.327-1.64.287-.805.287-1.495.201-1.64-.086-.143-.316-.23-.66-.402z"/></svg>
+  <a href="https://wa.me/91XXXXXXXXXX?text=Hello%20Device%20%26%20Controls!%20I%20need%20a%20quotation%20for%20industrial%20automation%20products."
+     class="wa-btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 2C8.268 2 2 8.268 2 16c0 2.433.648 4.71 1.783 6.68L2 30l7.522-1.745A13.93 13.93 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.5a11.44 11.44 0 01-5.824-1.596l-.417-.248-4.463 1.035 1.057-4.338-.272-.432A11.44 11.44 0 014.5 16C4.5 9.649 9.649 4.5 16 4.5S27.5 9.649 27.5 16 22.351 27.5 16 27.5zm6.29-8.47c-.345-.172-2.04-1.006-2.356-1.12-.316-.115-.547-.172-.777.172-.23.345-.89 1.12-1.091 1.35-.2.23-.402.258-.747.086-.345-.172-1.456-.537-2.773-1.711-1.025-.915-1.717-2.044-1.918-2.389-.2-.345-.021-.531.151-.703.155-.155.345-.402.517-.603.172-.2.23-.345.345-.575.115-.23.057-.431-.029-.603-.086-.172-.777-1.874-1.065-2.565-.28-.673-.564-.582-.777-.592-.2-.01-.43-.012-.66-.012-.23 0-.603.086-.92.431-.316.345-1.205 1.178-1.205 2.872 0 1.694 1.234 3.332 1.406 3.562.172.23 2.428 3.71 5.882 5.203.822.355 1.463.567 1.963.726.824.262 1.574.225 2.168.137.661-.099 2.04-.834 2.327-1.64.287-.805.287-1.495.201-1.64-.086-.143-.316-.23-.66-.402z"/>
+    </svg>
   </a>
 </div>
 
-<!-- ═══════════════════════════════════════════════════
-     JAVASCRIPT — Hero slider + nav toggle
-═══════════════════════════════════════════════════ -->
+<!-- ─── SCRIPTS ─────────────────────────────── -->
 <script>
-  /* ── NAV TOGGLE ──────────────────────────────────── */
+  /* NAV TOGGLE */
   function toggleMenu() {
     document.getElementById('navLinks').classList.toggle('open');
   }
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => {
+  document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.addEventListener('click', function() {
       document.getElementById('navLinks').classList.remove('open');
     });
   });
 
-  /* ── HERO SLIDER ─────────────────────────────────── */
-  let current = 0;
-  const total = 3;
-  let autoTimer;
+  /* HERO SLIDER */
+  var current   = 0;
+  var total     = 3;
+  var autoTimer = null;
 
   function updateSlider() {
-    document.getElementById('slides').style.transform = `translateX(-${current * 100}%)`;
-    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    document.getElementById('slides').style.transform =
+      'translateX(-' + (current * 100) + '%)';
+    document.querySelectorAll('.dot').forEach(function(d, i) {
+      d.classList.toggle('active', i === current);
+    });
   }
 
   function moveSlide(dir) {
@@ -1101,19 +1080,22 @@
 
   function resetAuto() {
     clearInterval(autoTimer);
-    autoTimer = setInterval(() => moveSlide(1), 4000);
+    autoTimer = setInterval(function() { moveSlide(1); }, 4000);
   }
 
   resetAuto();
 
-  // Swipe support
-  let touchStartX = 0;
-  const sliderWrap = document.querySelector('.slider-wrap');
-  sliderWrap.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  sliderWrap.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - touchStartX;
+  /* SWIPE SUPPORT */
+  var touchStartX = 0;
+  var sliderEl = document.querySelector('.slider-wrap');
+  sliderEl.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  sliderEl.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - touchStartX;
     if (Math.abs(dx) > 40) moveSlide(dx < 0 ? 1 : -1);
   }, { passive: true });
 </script>
+
 </body>
 </html>
