@@ -48,6 +48,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
   }
 
   .logo {
@@ -72,6 +73,10 @@
     list-style: none;
   }
 
+  .nav-links > li {
+    position: static;
+  }
+
   .nav-links a {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 600;
@@ -83,6 +88,12 @@
     position: relative;
     padding-bottom: 4px;
     transition: color 0.25s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
 
   .nav-links a::after {
@@ -97,6 +108,228 @@
   .nav-links a:hover { color: var(--white); }
   .nav-links a:hover::after { width: 100%; }
 
+  /* Products trigger */
+  .products-trigger {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-bottom: 4px;
+    position: relative;
+    transition: color 0.25s;
+  }
+  .products-trigger::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--orange);
+    transition: width 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .products-trigger:hover,
+  .products-li:hover .products-trigger,
+  .products-li.open .products-trigger {
+    color: var(--white);
+  }
+  .products-trigger:hover::after,
+  .products-li:hover .products-trigger::after,
+  .products-li.open .products-trigger::after {
+    width: 100%;
+  }
+
+  .trigger-chevron {
+    width: 13px; height: 13px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+    flex-shrink: 0;
+  }
+  .products-li:hover .trigger-chevron,
+  .products-li.open .trigger-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* ══════════════════════════════
+     MEGA DROPDOWN — DESKTOP
+  ══════════════════════════════ */
+  .mega-dropdown {
+    position: fixed;
+    top: 95px; /* header height */
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: var(--white);
+    border-top: 3px solid var(--orange);
+    box-shadow: 0 20px 60px rgba(13,31,60,0.22), 0 4px 16px rgba(0,0,0,0.10);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s;
+    pointer-events: none;
+  }
+
+  .products-li:hover .mega-dropdown,
+  .products-li.open .mega-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  .mega-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 36px 32px 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  /* Dividers between columns */
+  .mega-col {
+    padding: 0 28px;
+    border-right: 1px solid rgba(26,58,107,0.08);
+  }
+  .mega-col:first-child { padding-left: 0; }
+  .mega-col:last-child  { border-right: none; padding-right: 0; }
+
+  .mega-col-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding-bottom: 13px;
+    border-bottom: 2px solid var(--light);
+  }
+
+  .mega-col-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .mega-col-icon svg {
+    width: 16px; height: 16px;
+    stroke: white; fill: none;
+    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .mega-col-icon--blue   { background: linear-gradient(135deg, var(--blue), var(--blue-mid)); }
+  .mega-col-icon--orange { background: linear-gradient(135deg, var(--orange), var(--orange-light)); }
+  .mega-col-icon--teal   { background: linear-gradient(135deg, #0d7a6b, #12a98c); }
+  .mega-col-icon--purple { background: linear-gradient(135deg, #5b3ea0, #7c5cbf); }
+
+  .mega-col-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    line-height: 1.2;
+  }
+
+  .mega-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .mega-col ul li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-light);
+    text-decoration: none;
+    letter-spacing: 0;
+    text-transform: none;
+    transition: background 0.18s, color 0.18s, padding-left 0.18s;
+    position: relative;
+  }
+  .mega-col ul li a::after { display: none; }
+
+  .mega-col ul li a::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--orange);
+    flex-shrink: 0;
+    opacity: 0.4;
+    transition: opacity 0.18s, transform 0.18s;
+  }
+
+  .mega-col ul li a:hover {
+    background: var(--light);
+    color: var(--blue);
+    padding-left: 14px;
+  }
+  .mega-col ul li a:hover::before {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+
+  /* Mega footer bar */
+  .mega-footer {
+    background: var(--light);
+    border-top: 1px solid rgba(26,58,107,0.08);
+    padding: 14px 32px;
+  }
+  .mega-footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .mega-footer p {
+    font-size: 0.8rem;
+    color: var(--text-light);
+  }
+  .mega-footer p strong {
+    color: var(--orange);
+  }
+  .mega-footer-cta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--orange), var(--orange-light));
+    padding: 8px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+  .mega-footer-cta::after { display: none !important; }
+  .mega-footer-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(232,119,34,0.4);
+    color: var(--white);
+  }
+
+  /* ══════════════════════════════
+     HAMBURGER
+  ══════════════════════════════ */
   .hamburger {
     display: none;
     flex-direction: column;
@@ -112,6 +345,130 @@
     background: var(--white);
     border-radius: 2px;
     transition: all 0.3s;
+  }
+  .hamburger.is-active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.is-active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ══════════════════════════════
+     MOBILE NAV
+  ══════════════════════════════ */
+  @media (max-width: 768px) {
+    .hamburger { display: flex; }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 95px; left: 0; right: 0;
+      background: var(--dark);
+      flex-direction: column;
+      padding: 0;
+      gap: 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      max-height: calc(100vh - 95px);
+      overflow-y: auto;
+    }
+    .nav-links.open { display: flex; }
+
+    .nav-links > li {
+      width: 100%;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-links > li > a {
+      display: block;
+      width: 100%;
+      padding: 15px 24px;
+      font-size: 0.95rem;
+    }
+    .nav-links > li > a::after { display: none; }
+
+    /* Products mobile trigger */
+    .products-trigger {
+      width: 100%;
+      padding: 15px 24px;
+      justify-content: space-between;
+      font-size: 0.95rem;
+    }
+    .products-trigger::after { display: none; }
+
+    /* Mobile mega dropdown: becomes accordion */
+    .mega-dropdown {
+      position: static;
+      top: auto;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      box-shadow: none;
+      border-top: none;
+      border-left: 3px solid var(--orange);
+      background: rgba(0,0,0,0.2);
+      pointer-events: all;
+      display: none;
+      margin: 0;
+    }
+    .products-li.open .mega-dropdown { display: block; }
+
+    .mega-inner {
+      grid-template-columns: 1fr;
+      padding: 0;
+      gap: 0;
+    }
+
+    .mega-col {
+      padding: 0;
+      border-right: none;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .mega-col:last-child { border-bottom: none; }
+
+    .mega-col-header {
+      padding: 14px 24px 12px;
+      margin-bottom: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.04);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .mega-col-title { color: var(--white); font-size: 0.78rem; }
+
+    .mega-col ul {
+      display: none;
+      padding: 8px 0;
+      background: rgba(0,0,0,0.15);
+    }
+    .mega-col.mob-open ul { display: flex; }
+
+    .mega-col ul li a {
+      padding: 9px 24px 9px 36px;
+      color: rgba(255,255,255,0.65);
+      border-radius: 0;
+      font-size: 0.85rem;
+    }
+    .mega-col ul li a::before { background: var(--orange-light); }
+    .mega-col ul li a:hover {
+      background: rgba(255,255,255,0.05);
+      color: var(--white);
+      padding-left: 40px;
+    }
+
+    .mega-footer { display: none; }
+
+    /* Chevron on mobile col headers */
+    .mega-col-header::after {
+      content: '';
+      display: block;
+      margin-left: auto;
+      width: 10px; height: 10px;
+      border-right: 2px solid rgba(255,255,255,0.4);
+      border-bottom: 2px solid rgba(255,255,255,0.4);
+      transform: rotate(45deg);
+      transition: transform 0.25s;
+      flex-shrink: 0;
+    }
+    .mega-col.mob-open .mega-col-header::after { transform: rotate(-135deg); }
   }
 
   /* ══════════════════════════════
@@ -533,7 +890,6 @@
     letter-spacing: 0.02em;
   }
 
-  /* ── Sensor Image Panel (replaces stats grid) ── */
   .why-image-panel {
     position: relative;
     display: flex;
@@ -541,7 +897,6 @@
     justify-content: center;
   }
 
-  /* Decorative background shape behind the image */
   .why-image-panel::before {
     content: '';
     position: absolute;
@@ -551,7 +906,6 @@
     z-index: 0;
   }
 
-  /* Subtle orange accent ring */
   .why-image-panel::after {
     content: '';
     position: absolute;
@@ -585,7 +939,6 @@
       0 10px 32px rgba(232,119,34,0.16);
   }
 
-  /* Corner bracket decoration */
   .img-bracket {
     position: absolute;
     width: 40px; height: 40px;
@@ -714,19 +1067,6 @@
 
   @media (max-width: 768px) {
     section { padding: 64px 20px; }
-    .hamburger { display: flex; }
-    .nav-links {
-      display: none;
-      position: absolute;
-      top: 95px; left: 0; right: 0;
-      background: var(--dark);
-      flex-direction: column;
-      padding: 24px;
-      gap: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .nav-links.open { display: flex; }
     .why-features { grid-template-columns: 1fr; }
     .why-image-panel { max-width: 100%; }
     .contact-grid { grid-template-columns: 1fr; gap: 36px; }
@@ -773,7 +1113,6 @@
     align-items: center;
   }
 
-  /* ── Left: relay image panel ── */
   .industries-image-panel {
     position: relative;
     display: flex;
@@ -832,7 +1171,6 @@
   .ind-bracket--tl { top: -4px; left: -4px; border-top: 3px solid var(--blue-light); border-left: 3px solid var(--blue-light); border-radius: 4px 0 0 0; }
   .ind-bracket--br { bottom: -4px; right: -4px; border-bottom: 3px solid var(--orange); border-right: 3px solid var(--orange); border-radius: 0 0 4px 0; }
 
-  /* ── Right: copy & list ── */
   .industries-copy p {
     font-size: 1.05rem;
     line-height: 1.8;
@@ -907,12 +1245,104 @@
     <a href="#home" class="logo">
       <img src="device control logo.jpeg" alt="Device & Controls Logo" class="navbar-logo">
     </a>
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
-      <li><a href="#brands">Products</a></li>
+
+      <!-- MEGA MENU ITEM -->
+      <li class="products-li" id="productsLi">
+        <button class="products-trigger" id="productsTrigger" aria-expanded="false" aria-haspopup="true">
+          Products
+          <svg class="trigger-chevron" viewBox="0 0 24 24">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+
+        <div class="mega-dropdown" id="megaDropdown" role="region" aria-label="Products menu">
+          <div class="mega-inner">
+
+            <!-- COL 1: Automation & Networking -->
+            <div class="mega-col" id="megaCol0">
+              <div class="mega-col-header">
+                <span class="mega-col-icon mega-col-icon--blue">
+                  <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg>
+                </span>
+                <span class="mega-col-title">Automation &amp;<br>Networking</span>
+              </div>
+              <ul>
+                <li><a href="#brands">PLC &amp; HMI</a></li>
+                <li><a href="#brands">PLCC &amp; Industrial PC</a></li>
+                <li><a href="#brands">Ethernet Switches</a></li>
+                <li><a href="#brands">Media Converters &amp; LIU Boxes</a></li>
+                <li><a href="#brands">Profibus (Cables, Connectors, Repeaters, Gateways)</a></li>
+              </ul>
+            </div>
+
+            <!-- COL 2: Power, Switching & Control -->
+            <div class="mega-col" id="megaCol1">
+              <div class="mega-col-header">
+                <span class="mega-col-icon mega-col-icon--orange">
+                  <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </span>
+                <span class="mega-col-title">Power, Switching<br>&amp; Control</span>
+              </div>
+              <ul>
+                <li><a href="#brands">SMPS (Power Supplies)</a></li>
+                <li><a href="#brands">Switchgears &amp; Thyristors</a></li>
+                <li><a href="#brands">Relays (General, Board, SSR, ELR)</a></li>
+                <li><a href="#brands">Electronic Timers</a></li>
+                <li><a href="#brands">Safety Barriers</a></li>
+              </ul>
+            </div>
+
+            <!-- COL 3: Motion & Measurement -->
+            <div class="mega-col" id="megaCol2">
+              <div class="mega-col-header">
+                <span class="mega-col-icon mega-col-icon--teal">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                </span>
+                <span class="mega-col-title">Motion &amp;<br>Measurement</span>
+              </div>
+              <ul>
+                <li><a href="#brands">VFDs &amp; Electric Motors</a></li>
+                <li><a href="#brands">Servo Motors &amp; Drives</a></li>
+                <li><a href="#brands">Encoders</a></li>
+                <li><a href="#brands">Sensors (Proximity, Photoelectric, Limit)</a></li>
+                <li><a href="#brands">Temperature &amp; Pressure Gauges/Transmitters</a></li>
+              </ul>
+            </div>
+
+            <!-- COL 4: Mechanical & Hardware -->
+            <div class="mega-col" id="megaCol3">
+              <div class="mega-col-header">
+                <span class="mega-col-icon mega-col-icon--purple">
+                  <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                </span>
+                <span class="mega-col-title">Mechanical &amp;<br>Hardware</span>
+              </div>
+              <ul>
+                <li><a href="#brands">Bearings</a></li>
+                <li><a href="#brands">Linear Guideways &amp; Ballscrews</a></li>
+                <li><a href="#brands">Solenoid Coils &amp; Valves</a></li>
+                <li><a href="#brands">Tower Lights &amp; Panel Indicators</a></li>
+                <li><a href="#brands">Cable Lugs &amp; Hardware</a></li>
+              </ul>
+            </div>
+
+          </div><!-- /.mega-inner -->
+
+          <div class="mega-footer">
+            <div class="mega-footer-inner">
+              <p>Can't find what you need? <strong>We source across 20+ brands</strong> — just ask us.</p>
+              <a href="#contact" class="mega-footer-cta">Request a Quote</a>
+            </div>
+          </div>
+
+        </div><!-- /.mega-dropdown -->
+      </li><!-- /.products-li -->
+
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -964,7 +1394,7 @@
           </div>
         </div>
 
-      </div><!-- /.slides -->
+      </div>
 
       <button class="slider-btn prev" onclick="moveSlide(-1)" aria-label="Previous slide">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -978,123 +1408,40 @@
         <button class="dot"        onclick="goToSlide(1)" aria-label="Slide 2"></button>
         <button class="dot"        onclick="goToSlide(2)" aria-label="Slide 3"></button>
       </div>
-    </div><!-- /.slider-wrap -->
+    </div>
   </div>
 </section>
 
 <!-- ─── OUR BRANDS ─────────────────────────── -->
 <section id="brands">
   <div class="section-inner">
-
     <div class="brands-header">
       <span class="section-label">Trusted Partners</span>
       <h2 class="section-title">OUR BRANDS</h2>
       <div class="title-underline"></div>
     </div>
-
     <div class="brands-grid">
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Siemens.png" alt="Siemens">
-        <span class="brand-name">Siemens</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Schneider.png" alt="Schneider Electric">
-        <span class="brand-name">Schneider Electric</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Allen_Bradley.png" alt="Allen-Bradley">
-        <span class="brand-name">Allen-Bradley</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Omron.png" alt="Omron">
-        <span class="brand-name">Omron</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Larsen_Toubro.png" alt="Larsen &amp; Toubro">
-        <span class="brand-name">Larsen &amp; Toubro</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Eaton.png" alt="Eaton">
-        <span class="brand-name">Eaton</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Phoenix_Contact.png" alt="Phoenix Contact">
-        <span class="brand-name">Phoenix Contact</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Pepperl_Fuchs.png" alt="Pepperl+Fuchs">
-        <span class="brand-name">Pepperl+Fuchs</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="ABB.png" alt="ABB">
-        <span class="brand-name">ABB</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Yaskawa.png" alt="Yaskawa">
-        <span class="brand-name">Yaskawa</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Fuji_Electric.png" alt="Fuji Electric">
-        <span class="brand-name">Fuji Electric</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Delta.png" alt="Delta">
-        <span class="brand-name">Delta</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Turck.png" alt="Turck">
-        <span class="brand-name">Turck</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Autonics.png" alt="Autonics">
-        <span class="brand-name">Autonics</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="SICK.png" alt="SICK">
-        <span class="brand-name">SICK</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Baumer.png" alt="Baumer">
-        <span class="brand-name">Baumer</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Mean_Well.png" alt="Mean Well">
-        <span class="brand-name">Mean Well</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Luminous.png" alt="Luminous">
-        <span class="brand-name">Luminous</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Selec.png" alt="Selec">
-        <span class="brand-name">Selec</span>
-      </div>
-
-      <div class="brand-card">
-        <img class="brand-logo" src="Janatics.png" alt="Janatics">
-        <span class="brand-name">Janatics</span>
-      </div>
-
-    </div><!-- /.brands-grid -->
+      <div class="brand-card"><img class="brand-logo" src="Siemens.png" alt="Siemens"><span class="brand-name">Siemens</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Schneider.png" alt="Schneider Electric"><span class="brand-name">Schneider Electric</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Allen_Bradley.png" alt="Allen-Bradley"><span class="brand-name">Allen-Bradley</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Omron.png" alt="Omron"><span class="brand-name">Omron</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Larsen_Toubro.png" alt="Larsen &amp; Toubro"><span class="brand-name">Larsen &amp; Toubro</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Eaton.png" alt="Eaton"><span class="brand-name">Eaton</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Phoenix_Contact.png" alt="Phoenix Contact"><span class="brand-name">Phoenix Contact</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Pepperl_Fuchs.png" alt="Pepperl+Fuchs"><span class="brand-name">Pepperl+Fuchs</span></div>
+      <div class="brand-card"><img class="brand-logo" src="ABB.png" alt="ABB"><span class="brand-name">ABB</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Yaskawa.png" alt="Yaskawa"><span class="brand-name">Yaskawa</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Fuji_Electric.png" alt="Fuji Electric"><span class="brand-name">Fuji Electric</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Delta.png" alt="Delta"><span class="brand-name">Delta</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Turck.png" alt="Turck"><span class="brand-name">Turck</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Autonics.png" alt="Autonics"><span class="brand-name">Autonics</span></div>
+      <div class="brand-card"><img class="brand-logo" src="SICK.png" alt="SICK"><span class="brand-name">SICK</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Baumer.png" alt="Baumer"><span class="brand-name">Baumer</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Mean_Well.png" alt="Mean Well"><span class="brand-name">Mean Well</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Luminous.png" alt="Luminous"><span class="brand-name">Luminous</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Selec.png" alt="Selec"><span class="brand-name">Selec</span></div>
+      <div class="brand-card"><img class="brand-logo" src="Janatics.png" alt="Janatics"><span class="brand-name">Janatics</span></div>
+    </div>
   </div>
 </section>
 
@@ -1102,53 +1449,25 @@
 <section id="why">
   <div class="section-inner">
     <div class="why-grid">
-
-      <!-- LEFT: text & feature items (unchanged) -->
       <div class="why-copy">
         <span class="section-label">Our Advantage</span>
         <h2 class="section-title">Why Choose Us</h2>
         <div class="title-underline"></div>
         <p>At Device and Controls, we combine technical expertise, reliable product sourcing, and fast customer support to deliver dependable industrial automation solutions. We are committed to supplying genuine products, competitive pricing, and quick response services for industries, OEMs, panel builders, and automation professionals.</p>
         <div class="why-features">
-          <div class="feature-item">
-            <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-            <strong>Genuine Products</strong>
-          </div>
-          <div class="feature-item">
-            <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-            <strong>Fast Quotation Support</strong>
-          </div>
-          <div class="feature-item">
-            <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-            <strong>Trusted Automation Brands</strong>
-          </div>
-          <div class="feature-item">
-            <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-            <strong>Ready Stock Availability</strong>
-          </div>
-          <div class="feature-item">
-            <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-            <strong>Technical Assistance</strong>
-          </div>
-          <div class="feature-item">
-            <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-            <strong>Quick Dispatch Across India</strong>
-          </div>
+          <div class="feature-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div><strong>Genuine Products</strong></div>
+          <div class="feature-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div><strong>Fast Quotation Support</strong></div>
+          <div class="feature-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div><strong>Trusted Automation Brands</strong></div>
+          <div class="feature-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div><strong>Ready Stock Availability</strong></div>
+          <div class="feature-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div><strong>Technical Assistance</strong></div>
+          <div class="feature-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div><strong>Quick Dispatch Across India</strong></div>
         </div>
       </div>
-
-      <!-- RIGHT: sensor image replaces stats grid -->
       <div class="why-image-panel">
         <span class="img-bracket img-bracket--tl"></span>
         <span class="img-bracket img-bracket--br"></span>
-        <img
-          src="sensor.png"
-          alt="Industrial Sensor — Device & Controls"
-          class="sensor-img"
-          loading="lazy"
-        >
+        <img src="sensor.png" alt="Industrial Sensor — Device & Controls" class="sensor-img" loading="lazy">
       </div>
-
     </div>
   </div>
 </section>
@@ -1157,74 +1476,30 @@
 <section id="industries">
   <div class="section-inner">
     <div class="industries-grid">
-
-      <!-- LEFT: relay image -->
       <div class="industries-image-panel">
         <span class="ind-bracket ind-bracket--tl"></span>
         <span class="ind-bracket ind-bracket--br"></span>
-        <img
-          src="https://ahmedmousam136-ai.github.io/nilanjan/relay.png"
-          alt="Industrial Relay — Device & Controls"
-          class="relay-img"
-          loading="lazy"
-        >
+        <img src="https://ahmedmousam136-ai.github.io/nilanjan/relay.png" alt="Industrial Relay — Device & Controls" class="relay-img" loading="lazy">
       </div>
-
-      <!-- RIGHT: heading & list -->
       <div class="industries-copy">
         <span class="section-label">Our Reach</span>
         <h2 class="section-title">Industries We Serve</h2>
         <div class="title-underline"></div>
         <p>We supply mission-critical automation components to a wide spectrum of industries across India — ensuring the right product reaches the right application, on time, every time.</p>
-
         <ul class="industries-list">
-          <li>
-            <span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-            Steel &amp; Metal Industries
-          </li>
-          <li>
-            <span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-            Rolling Mills
-          </li>
-          <li>
-            <span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-            Foundries &amp; Casting Plants
-          </li>
-          <li>
-            <span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-            Mining Industries
-          </li>
-          <li>
-            <span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-            Oil &amp; Gas Industries
-          </li>
-          <li>
-            <span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-            Petrochemical Plants
-          </li>
-          <li>
-            <span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-            Packaging Industries
-          </li>
-          <li>
-            <span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-            Food Processing Plants
-          </li>
-          <li>
-            <span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-            Water Treatment Plants
-          </li>
-          <li>
-            <span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-            OEM Machine Builders
-          </li>
-          <li>
-            <span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-            Panel Builders
-          </li>
+          <li><span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Steel &amp; Metal Industries</li>
+          <li><span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Rolling Mills</li>
+          <li><span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Foundries &amp; Casting Plants</li>
+          <li><span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Mining Industries</li>
+          <li><span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Oil &amp; Gas Industries</li>
+          <li><span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Petrochemical Plants</li>
+          <li><span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Packaging Industries</li>
+          <li><span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Food Processing Plants</li>
+          <li><span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Water Treatment Plants</li>
+          <li><span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>OEM Machine Builders</li>
+          <li><span class="ind-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Panel Builders</li>
         </ul>
       </div>
-
     </div>
   </div>
 </section>
@@ -1233,7 +1508,6 @@
 <footer id="contact">
   <div class="section-inner">
     <div class="contact-grid">
-
       <div class="contact-brand">
         <div>
           <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.6rem;background:linear-gradient(90deg,#5ab4ff,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">DEVICE</span>
@@ -1241,7 +1515,6 @@
         </div>
         <p class="contact-desc">Your trusted partner for genuine industrial automation products. We supply VFDs, PLCs, sensors, controllers, and more from the world's top brands — delivered fast across India.</p>
       </div>
-
       <div class="contact-col">
         <h4>Quick Links</h4>
         <ul>
@@ -1252,7 +1525,6 @@
           <li><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg> Get a Quote</li>
         </ul>
       </div>
-
       <div class="contact-col">
         <h4>Contact Us</h4>
         <ul>
@@ -1270,9 +1542,7 @@
           </li>
         </ul>
       </div>
-
-    </div><!-- /.contact-grid -->
-
+    </div>
     <div class="footer-bottom">
       <p>&copy; 2025 Device &amp; Controls. All rights reserved.</p>
       <p>Industrial Automation | Genuine Products | Fast Dispatch</p>
@@ -1293,17 +1563,73 @@
 
 <!-- ─── SCRIPTS ─────────────────────────────── -->
 <script>
-  /* NAV TOGGLE */
-  function toggleMenu() {
-    document.getElementById('navLinks').classList.toggle('open');
-  }
-  document.querySelectorAll('.nav-links a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      document.getElementById('navLinks').classList.remove('open');
+  /* ── HAMBURGER ── */
+  var hamburger  = document.getElementById('hamburger');
+  var navLinks   = document.getElementById('navLinks');
+  var productsLi = document.getElementById('productsLi');
+
+  hamburger.addEventListener('click', function () {
+    var isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('is-active', isOpen);
+    // Close mega on hamburger close
+    if (!isOpen) productsLi.classList.remove('open');
+  });
+
+  /* ── PRODUCTS MEGA MENU — DESKTOP hover + click toggle ── */
+  var productsTrigger = document.getElementById('productsTrigger');
+  var isMobile = function () { return window.innerWidth <= 768; };
+
+  // Desktop: hover
+  productsLi.addEventListener('mouseenter', function () {
+    if (!isMobile()) productsLi.classList.add('open');
+  });
+  productsLi.addEventListener('mouseleave', function () {
+    if (!isMobile()) productsLi.classList.remove('open');
+  });
+
+  // Click toggle (works both desktop + mobile)
+  productsTrigger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var isOpen = productsLi.classList.toggle('open');
+    productsTrigger.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close mega when clicking outside
+  document.addEventListener('click', function (e) {
+    if (!productsLi.contains(e.target)) {
+      productsLi.classList.remove('open');
+      productsTrigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Close mega when a link inside is clicked
+  document.querySelectorAll('.mega-dropdown a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      productsLi.classList.remove('open');
+      productsTrigger.setAttribute('aria-expanded', 'false');
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('is-active');
     });
   });
 
-  /* HERO SLIDER */
+  /* ── MOBILE ACCORDION: col headers toggle sub-lists ── */
+  document.querySelectorAll('.mega-col-header').forEach(function (header) {
+    header.addEventListener('click', function () {
+      if (!isMobile()) return;
+      var col = header.closest('.mega-col');
+      col.classList.toggle('mob-open');
+    });
+  });
+
+  /* ── Close other nav links on click ── */
+  document.querySelectorAll('.nav-links > li > a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('is-active');
+    });
+  });
+
+  /* ── HERO SLIDER ── */
   var current   = 0;
   var total     = 3;
   var autoTimer = null;
