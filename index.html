@@ -1148,6 +1148,169 @@
     }
     .zoom-reset:hover { background: var(--navy); color: #fff; }
 
+    /* ═══════════════════════════════════════════
+       INDUSTRIES WE SERVE
+    ═══════════════════════════════════════════ */
+    #industries {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    #industries::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 10% 60%, rgba(245,166,35,0.06) 0%, transparent 55%),
+        radial-gradient(ellipse at 90% 20%, rgba(26,46,74,0.8) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    #industries .section-tag { color: var(--orange); background: rgba(245,166,35,0.12); border-color: rgba(245,166,35,0.38); }
+    #industries .section-title { color: #fff; }
+
+    .industries-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      margin-top: 44px;
+    }
+
+    /* ── Left: image frame ── */
+    .industries-img-frame {
+      position: relative;
+    }
+    .industries-img-frame::before {
+      content: '';
+      position: absolute;
+      top: -12px; left: -12px;
+      right: 12px; bottom: 12px;
+      border: 2px solid rgba(245,166,35,0.35);
+      border-radius: 10px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .industries-img-frame::after {
+      content: '';
+      position: absolute;
+      top: 12px; left: 12px;
+      right: -12px; bottom: -12px;
+      background: rgba(245,166,35,0.07);
+      border-radius: 10px;
+      z-index: 0;
+    }
+    .industries-img-frame img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      position: relative;
+      z-index: 1;
+      object-fit: cover;
+      box-shadow: 0 28px 64px rgba(0,0,0,0.55);
+    }
+    .industries-img-tag {
+      position: absolute;
+      bottom: -18px;
+      right: -4px;
+      z-index: 2;
+      background: var(--orange);
+      color: var(--navy);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 4px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.28);
+    }
+
+    /* ── Right: list ── */
+    .industries-list-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .industries-list-col .iws-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+    .industries-list-col h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.55rem, 2.6vw, 2.1rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+    .industries-list-col h2 span { color: var(--orange); }
+
+    .industries-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      list-style: none;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .industries-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.78);
+      letter-spacing: 0.01em;
+      transition: color 0.16s;
+    }
+    .industries-list li:hover { color: #fff; }
+    .industries-list li .iws-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(245,166,35,0.6);
+    }
+
+    /* odd items get a right-side border for the 2-col grid lines */
+    .industries-list li:nth-child(odd) {
+      border-right: 1px solid rgba(255,255,255,0.07);
+      padding-right: 22px;
+    }
+    .industries-list li:nth-child(even) {
+      padding-left: 22px;
+    }
+
+    @media (max-width: 900px) {
+      .industries-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .industries-img-frame {
+        max-width: 520px;
+        margin: 0 auto;
+      }
+    }
+    @media (max-width: 560px) {
+      .industries-list {
+        grid-template-columns: 1fr;
+      }
+      .industries-list li:nth-child(odd) {
+        border-right: none;
+        padding-right: 0;
+      }
+      .industries-list li:nth-child(even) {
+        padding-left: 0;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1430,6 +1593,51 @@
             <p>PAN India delivery with reliable logistics partners — your order moves fast.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       INDUSTRIES WE SERVE
+  ═══════════════════════════════════════════ -->
+  <section class="section" id="industries">
+    <div class="section-inner">
+      <div class="section-tag">Who We Serve</div>
+      <div class="section-title" style="color:#fff;">Industries We <span style="color:var(--orange);">Serve</span></div>
+      <div class="section-sub" style="color:rgba(255,255,255,0.62);">From heavy manufacturing to precision OEM builders — we supply the automation products that keep your operations running.</div>
+
+      <div class="industries-layout">
+
+        <!-- Left: image -->
+        <div class="industries-img-frame">
+          <img
+            src="https://raw.githubusercontent.com/deviceandcontrols/deviceandcontrols/main/relay.png"
+            alt="Industrial Relay & Control Equipment"
+            onerror="this.onerror=null;this.src='relay.png';"
+          />
+          <div class="industries-img-tag">Industrial-Grade Equipment</div>
+        </div>
+
+        <!-- Right: industry list -->
+        <div class="industries-list-col">
+          <div class="iws-eyebrow">Sectors We Support</div>
+          <h2>Powering India's <span>Core Industries</span></h2>
+
+          <ul class="industries-list">
+            <li><span class="iws-dot"></span>Steel &amp; Metal Industries</li>
+            <li><span class="iws-dot"></span>Rolling Mills</li>
+            <li><span class="iws-dot"></span>Foundries &amp; Casting Plants</li>
+            <li><span class="iws-dot"></span>Mining Industries</li>
+            <li><span class="iws-dot"></span>Oil &amp; Gas Industries</li>
+            <li><span class="iws-dot"></span>Petrochemical Plants</li>
+            <li><span class="iws-dot"></span>Packaging Industries</li>
+            <li><span class="iws-dot"></span>Food Processing Plants</li>
+            <li><span class="iws-dot"></span>Water Treatment Plants</li>
+            <li><span class="iws-dot"></span>OEM Machine Builders</li>
+            <li><span class="iws-dot"></span>Panel Builders</li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </section>
