@@ -637,39 +637,6 @@
        BRANDS
     ═══════════════════════════════════════════ */
     #brands { background: var(--white); }
-    .brands-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 14px;
-      margin-top: 40px;
-    }
-    .brand-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      padding: 24px 14px;
-      background: var(--light);
-      border: 1.5px solid var(--border);
-      border-top: 3px solid transparent;
-      border-radius: var(--radius);
-      transition: box-shadow 0.18s, transform 0.15s, border-top-color 0.18s;
-      cursor: default;
-    }
-    .brand-card:hover {
-      box-shadow: var(--shadow);
-      transform: translateY(-3px);
-      border-top-color: var(--orange);
-    }
-    .brand-card img {
-      height: 42px;
-      width: auto;
-      object-fit: contain;
-      filter: grayscale(20%);
-      transition: filter 0.2s;
-    }
-    .brand-card:hover img { filter: grayscale(0%); }
-    .brand-card span { font-size: 0.74rem; font-weight: 700; color: var(--text); letter-spacing: 0.02em; }
 
     /* ═══════════════════════════════════════════
        WHY CHOOSE US
@@ -886,22 +853,56 @@
       box-shadow: 0 0 5px rgba(74,222,128,0.6);
     }
 
-    /* WhatsApp FAB */
-    .whatsapp-fab {
-      position: fixed; bottom: 26px; right: 26px; z-index: 800;
-      background: #25d366; color: #fff;
-      border-radius: 50px; padding: 12px 20px;
-      font-size: 0.8rem; font-weight: 700;
-      display: flex; align-items: center; gap: 8px;
-      box-shadow: 0 6px 24px rgba(37,211,102,0.42);
+    /* Floating Action Buttons */
+    .fab-stack {
+      position: fixed;
+      bottom: 26px;
+      right: 26px;
+      z-index: 800;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-end;
+    }
+    .fab-btn {
+      border-radius: 50px;
+      padding: 12px 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
       transition: transform 0.15s, box-shadow 0.15s;
       letter-spacing: 0.02em;
+      color: #fff;
     }
-    .whatsapp-fab:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(37,211,102,0.52); }
-    .whatsapp-fab svg { width: 20px; height: 20px; }
+    .fab-btn:hover { transform: translateY(-2px); }
+    .fab-btn svg { width: 20px; height: 20px; }
+
+    /* Phone FAB */
+    .phone-fab {
+      background: var(--navy);
+      box-shadow: 0 6px 24px rgba(13,27,46,0.42);
+    }
+    .phone-fab:hover { box-shadow: 0 10px 32px rgba(13,27,46,0.52); }
+
+    /* Email FAB */
+    .email-fab {
+      background: #ea4335;
+      box-shadow: 0 6px 24px rgba(234,67,53,0.42);
+    }
+    .email-fab:hover { box-shadow: 0 10px 32px rgba(234,67,53,0.52); }
+
+    /* WhatsApp FAB */
+    .whatsapp-fab {
+      background: #25d366;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.42);
+    }
+    .whatsapp-fab:hover { box-shadow: 0 10px 32px rgba(37,211,102,0.52); }
+
     @media (max-width: 500px) {
-      .whatsapp-fab { padding: 12px; border-radius: 50%; }
-      .whatsapp-fab span { display: none; }
+      .fab-btn { padding: 12px; border-radius: 50%; }
+      .fab-btn span { display: none; }
     }
 
     /* ═══════════════════════════════════════════
@@ -1318,7 +1319,7 @@
   <!-- ═══════════════════════════════════════════
        NAVBAR
   ═══════════════════════════════════════════ -->
-  <nav class="navbar" id="home">
+  <nav class="navbar">
     <div class="nav-logo">
       <img src="device control logo.jpeg" alt="Device &amp; Controls Logo" onerror="this.style.display='none'" />
       <div class="nav-logo-text">Device &amp; Controls</div>
@@ -1406,7 +1407,7 @@
   <!-- ═══════════════════════════════════════════
        HERO
   ═══════════════════════════════════════════ -->
-  <section class="hero">
+  <section class="hero" id="home">
     <div class="hero-inner">
       <div class="hero-content">
         <div class="hero-eyebrow">Trusted Industrial Automation Partner</div>
@@ -1460,7 +1461,7 @@
   <!-- ═══════════════════════════════════════════
        PRODUCT SLIDER
   ═══════════════════════════════════════════ -->
-  <div class="product-slider-section">
+  <div class="product-slider-section" id="products">
     <div class="product-slider-inner">
 
       <!-- Static text panel — never moves -->
@@ -1498,20 +1499,17 @@
   <!-- ═══════════════════════════════════════════
        OUR BRANDS
   ═══════════════════════════════════════════ -->
-<section id="our-brands" class="w-full py-16 px-4 bg-white">
-    <div class="max-w-6xl mx-auto flex flex-col items-center">
-        
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3 tracking-tight text-center">
-            Our Brands
-        </h2>
-        <div class="w-16 h-1 bg-gray-800 rounded-full mb-10"></div>
-        
-        <div class="w-full flex justify-center items-center">
-           <img src="https://raw.githubusercontent.com/ahmedmousam136-ai/nilanjan/main/our%20brands.jpg" alt="Our Brands" class="w-full max-w-5xl h-auto object-contain rounded-xl shadow-md">
-        </div>
-
+  <section class="section" id="brands">
+    <div class="section-inner">
+      <div class="section-tag">Trusted Partners</div>
+      <div class="section-title">Our Brands</div>
+      <div class="section-sub">We partner with 20+ globally recognised brands across the automation spectrum.</div>
+      
+      <div style="margin-top: 40px; display: flex; justify-content: center; align-items: center;">
+        <img src="https://raw.githubusercontent.com/ahmedmousam136-ai/nilanjan/main/our%20brands.jpg" alt="Our Brands" style="width: 100%; max-width: 1000px; height: auto; object-fit: contain; border-radius: 12px; box-shadow: var(--shadow);">
+      </div>
     </div>
-</section>
+  </section>
   <!-- ═══════════════════════════════════════════
        WHY CHOOSE US
   ═══════════════════════════════════════════ -->
@@ -1749,7 +1747,7 @@
           <h4>Quick Links</h4>
           <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#brands">Products</a></li>
+            <li><a href="#products">Products</a></li>
             <li><a href="#brands">Our Brands</a></li>
             <li><a href="#why">Why Choose Us</a></li>
             <li><a href="#contact">Get a Quote</a></li>
@@ -1772,15 +1770,39 @@
     </div>
   </footer>
 
-  <!-- WhatsApp FAB -->
-  <a class="whatsapp-fab"
-     href="https://wa.me/91XXXXXXXXXX?text=Hello%20Device%20%26%20Controls!%20I%20need%20a%20quotation%20for%20industrial%20automation%20products."
-     target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
-    <span>💬 Chat on WhatsApp</span>
-  </a>
+  <!-- Floating Action Buttons Stack -->
+  <div class="fab-stack">
+    <!-- Phone FAB -->
+    <a class="fab-btn phone-fab"
+       href="tel:+91XXXXXXXXXX"
+       aria-label="Call us">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+      </svg>
+      <span>Call Us</span>
+    </a>
+
+    <!-- Email FAB -->
+    <a class="fab-btn email-fab"
+       href="mailto:info@deviceandcontrols.com?subject=Enquiry%20from%20Website"
+       aria-label="Email us">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+        <polyline points="22,6 12,13 2,6"/>
+      </svg>
+      <span>Email Us</span>
+    </a>
+
+    <!-- WhatsApp FAB -->
+    <a class="fab-btn whatsapp-fab"
+       href="https://wa.me/91XXXXXXXXXX?text=Hello%20Device%20%26%20Controls!%20I%20need%20a%20quotation%20for%20industrial%20automation%20products."
+       target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      <span>Chat on WhatsApp</span>
+    </a>
+  </div>
 
   <!-- ═══════════════════════════════════════════
        MSME MODAL — REAL GOI CERTIFICATE
