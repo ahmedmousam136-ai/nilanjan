@@ -853,6 +853,244 @@
       box-shadow: 0 0 5px rgba(74,222,128,0.6);
     }
 
+    /* GST Badge styles (matches MSME) */
+    .gst-badge-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      background: rgba(245,166,35,0.12);
+      border: 1.5px solid rgba(245,166,35,0.42);
+      color: var(--orange);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      padding: 7px 16px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      transition: background 0.18s, transform 0.15s;
+      margin-top: 10px;
+    }
+    .gst-badge-trigger:hover { background: rgba(245,166,35,0.22); transform: translateY(-1px); }
+    .gst-badge-trigger svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .gst-badge-trigger .check-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #4ade80; display: inline-block; flex-shrink: 0;
+      box-shadow: 0 0 6px rgba(74,222,128,0.7);
+      animation: pulse-dot 2s infinite;
+    }
+    .gst-badge-sm {
+      display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+      background: rgba(245,166,35,0.12);
+      border: 1.5px solid rgba(245,166,35,0.38);
+      color: var(--orange);
+      font-size: 0.69rem; font-weight: 700; letter-spacing: 0.08em;
+      padding: 6px 13px; border-radius: 4px; text-transform: uppercase;
+      transition: background 0.15s;
+      margin-top: 8px;
+    }
+    .gst-badge-sm:hover { background: rgba(245,166,35,0.22); }
+    .gst-badge-sm .check-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #4ade80; flex-shrink: 0;
+      box-shadow: 0 0 5px rgba(74,222,128,0.6);
+    }
+
+    /* GST MODAL */
+    #gstOverlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.78);
+      backdrop-filter: blur(6px);
+      z-index: 9900;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+    #gstOverlay.open { display: flex; }
+    #gstModal {
+      position: relative;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 32px 96px rgba(0,0,0,0.55);
+      width: min(740px, 100%);
+      max-height: 94vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      animation: modalIn 0.26s cubic-bezier(.22,.68,0,1.2) both;
+    }
+    .gst-modal-hd {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+      border-bottom: 3px solid var(--orange);
+    }
+    .gst-modal-hd-text h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .gst-modal-hd-text p {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.65);
+      margin-top: 2px;
+    }
+    .gst-close-btn {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #fff;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      font-size: 1.6rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .gst-close-btn:hover { background: rgba(255,255,255,0.2); }
+    .gst-scroll {
+      flex: 1 1 auto;
+      overflow: auto;
+      padding: 20px;
+      background: #f4f6f9;
+    }
+    .gst-zoom-wrap {
+      transform-origin: top center;
+      transition: transform 0.2s ease;
+    }
+    .gst-cert-container {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 24px;
+      max-width: 650px;
+      margin: 0 auto;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .gst-cert-header {
+      text-align: center;
+      border-bottom: 2px solid #1a5276;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+    .gst-cert-header .gst-logo {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+    .gst-cert-header h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      color: #1a5276;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .gst-cert-header p {
+      font-size: 0.75rem;
+      color: #555;
+    }
+    .gst-cert-title {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #c0392b;
+      margin: 16px 0;
+      text-transform: uppercase;
+    }
+    .gst-cert-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+    }
+    .gst-cert-table tr {
+      border-bottom: 1px solid #eee;
+    }
+    .gst-cert-table td {
+      padding: 10px 8px;
+      vertical-align: top;
+    }
+    .gst-cert-table .lbl {
+      font-weight: 600;
+      color: #333;
+      width: 40%;
+      background: #f9f9f9;
+    }
+    .gst-cert-table .val {
+      color: #1a1a2e;
+    }
+    .gst-cert-table .val strong {
+      color: #1a5276;
+    }
+    .gst-priv {
+      filter: blur(4px);
+      user-select: none;
+      pointer-events: none;
+    }
+    .gst-cert-footer {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid #ddd;
+      font-size: 0.7rem;
+      color: #666;
+      text-align: center;
+    }
+    .gst-disclaimer {
+      background: var(--light);
+      padding: 10px 16px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .gst-zoom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 16px;
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .gst-zoom-bar .zoom-btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      width: 32px; height: 32px;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .gst-zoom-bar .zoom-btn:hover { background: rgba(255,255,255,0.2); }
+    .gst-zoom-bar #gstZoomLabel {
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 0.8rem;
+      min-width: 50px;
+      text-align: center;
+    }
+    .gst-zoom-bar .zoom-reset {
+      background: var(--orange);
+      color: var(--navy);
+      border: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: opacity 0.15s;
+    }
+    .gst-zoom-bar .zoom-reset:hover { opacity: 0.85; }
+    @media (max-width: 600px) {
+      .gst-cert-container { padding: 16px; }
+      .gst-cert-table .lbl { width: 35%; font-size: 0.72rem; }
+      .gst-cert-table .val { font-size: 0.72rem; }
+    }
+
     /* Floating Action Buttons */
     .fab-stack {
       position: fixed;
@@ -1404,7 +1642,7 @@
     </ul>
   </nav>
 
-  <!-- ═══════════════════════════════════════════
+  <!-- ══════════════════════════════════════���════
        HERO
   ═══════════════════════════════════════════ -->
   <section class="hero" id="home">
@@ -1424,6 +1662,13 @@
         <button class="msme-badge-trigger" onclick="openMSMEModal()" aria-label="View MSME Certificate">
           <span class="check-dot"></span>
           MSME Registered · View Certificate
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/>
+          </svg>
+        </button>
+        <button class="gst-badge-trigger" onclick="openGSTModal()" aria-label="View GST Certificate">
+          <span class="check-dot"></span>
+          GST Registered · View Certificate
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/>
           </svg>
@@ -1741,6 +1986,10 @@
               <span class="check-dot"></span>
               MSME Registered · UDYAM-WB-10-0168223
             </button>
+            <button class="gst-badge-sm" onclick="openGSTModal()" aria-label="View GST Certificate">
+              <span class="check-dot"></span>
+              GST Registered · View Certificate
+            </button>
           </div>
         </div>
         <div class="footer-col">
@@ -1988,6 +2237,101 @@
   </div><!-- /#msmeOverlay -->
 
   <!-- ═══════════════════════════════════════════
+       GST MODAL — REAL GOI CERTIFICATE
+  ═══════════════════════════════════════════ -->
+  <div id="gstOverlay" role="dialog" aria-modal="true" aria-label="GST Registration Certificate" onclick="handleGSTOverlayClick(event)">
+    <div id="gstModal">
+
+      <!-- Header -->
+      <div class="gst-modal-hd">
+        <div class="gst-modal-hd-text">
+          <h2>GST Registration Certificate</h2>
+          <p>Goods and Services Tax · Government of India</p>
+        </div>
+        <button class="gst-close-btn" onclick="closeGSTModal()" aria-label="Close">&times;</button>
+      </div>
+
+      <!-- Scrollable certificate -->
+      <div class="gst-scroll">
+        <div class="gst-zoom-wrap" id="gstZoomWrap">
+          <div class="gst-cert-container">
+
+            <!-- GOI Header -->
+            <div class="gst-cert-header">
+              <div class="gst-logo">🏛️</div>
+              <h3>Goods and Services Tax</h3>
+              <p>Government of India · Form GST REG-06</p>
+              <p style="font-size:0.68rem;color:#888;margin-top:4px;">[See Rule 10(1)] · Registration Certificate (Amended)</p>
+            </div>
+
+            <div class="gst-cert-title">Registration Certificate</div>
+
+            <table class="gst-cert-table">
+              <tr>
+                <td class="lbl">Registration Number</td>
+                <td class="val"><strong>19AOBPD5561Q1ZI</strong></td>
+              </tr>
+              <tr>
+                <td class="lbl">Legal Name</td>
+                <td class="val gst-priv">LALI DUTTA</td>
+              </tr>
+              <tr>
+                <td class="lbl">Trade Name</td>
+                <td class="val"><strong>M/S DEVICE & CONTROLS</strong></td>
+              </tr>
+              <tr>
+                <td class="lbl">Constitution of Business</td>
+                <td class="val">Proprietorship</td>
+              </tr>
+              <tr>
+                <td class="lbl">Address of Principal Place of Business</td>
+                <td class="val">
+                  Ground Floor, 160 Jodhpur Garden,<br>
+                  Jodhpur Park, Kolkata,<br>
+                  West Bengal – 700045
+                </td>
+              </tr>
+              <tr>
+                <td class="lbl">Date of Validity</td>
+                <td class="val">From <strong>12/07/2023</strong> To <strong>Not Applicable</strong></td>
+              </tr>
+              <tr>
+                <td class="lbl">Type of Registration</td>
+                <td class="val"><strong>Regular</strong></td>
+              </tr>
+              <tr>
+                <td class="lbl">Date of Issue of Certificate</td>
+                <td class="val"><strong>12/08/2023</strong></td>
+              </tr>
+            </table>
+
+            <div class="gst-cert-footer">
+              <p><em>This is a system generated digitally signed Registration Certificate issued based on the deemed approval of application on 12/08/2023.</em></p>
+              <p style="margin-top:8px;"><strong>Note:</strong> The registration certificate is required to be prominently displayed at all places of Business/Office(s) in the State.</p>
+            </div>
+
+          </div><!-- /.gst-cert-container -->
+        </div><!-- /.gst-zoom-wrap -->
+      </div><!-- /.gst-scroll -->
+
+      <!-- Disclaimer strip -->
+      <div class="gst-disclaimer">
+        Verified GST Registration &nbsp;·&nbsp; GSTIN: 19AOBPD5561Q1ZI &nbsp;·&nbsp;
+        <em>Personal details blurred for privacy</em>
+      </div>
+
+      <!-- Zoom controls -->
+      <div class="gst-zoom-bar">
+        <button class="zoom-btn" onclick="zoomGSTDoc(-0.1)" aria-label="Zoom out">−</button>
+        <span id="gstZoomLabel">100%</span>
+        <button class="zoom-btn" onclick="zoomGSTDoc(+0.1)" aria-label="Zoom in">+</button>
+        <button class="zoom-reset" onclick="zoomGSTReset()">Reset</button>
+      </div>
+
+    </div><!-- /#gstModal -->
+  </div><!-- /#gstOverlay -->
+
+  <!-- ═══════════════════════════════════════════
        JAVASCRIPT
   ═══════════════════════════════════════════ -->
   <script>
@@ -2042,7 +2386,7 @@
 
     // Close mega on Escape
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') { closeMega(); closeMSMEModal(); }
+      if (e.key === 'Escape') { closeMega(); closeMSMEModal(); closeGSTModal(); }
     });
 
     // Close mega when any link inside it is clicked
@@ -2077,6 +2421,35 @@
     function applyZoom() {
       document.getElementById('msmeZoomWrap').style.transform = 'scale(' + currentZoom + ')';
       document.getElementById('zoomLabel').textContent = Math.round(currentZoom * 100) + '%';
+    }
+
+    /* ── GST Modal ── */
+    let gstCurrentZoom = 1;
+    const GST_ZOOM_MIN = 0.4, GST_ZOOM_MAX = 2.2;
+
+    function openGSTModal() {
+      document.getElementById('gstOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      zoomGSTReset();
+    }
+    function closeGSTModal() {
+      document.getElementById('gstOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function handleGSTOverlayClick(e) {
+      if (e.target === document.getElementById('gstOverlay')) closeGSTModal();
+    }
+    function zoomGSTDoc(delta) {
+      gstCurrentZoom = Math.min(GST_ZOOM_MAX, Math.max(GST_ZOOM_MIN, +(gstCurrentZoom + delta).toFixed(1)));
+      applyGSTZoom();
+    }
+    function zoomGSTReset() {
+      gstCurrentZoom = 1;
+      applyGSTZoom();
+    }
+    function applyGSTZoom() {
+      document.getElementById('gstZoomWrap').style.transform = 'scale(' + gstCurrentZoom + ')';
+      document.getElementById('gstZoomLabel').textContent = Math.round(gstCurrentZoom * 100) + '%';
     }
 
     /* ── Product Slider ── */
