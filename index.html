@@ -65,9 +65,9 @@
       gap: 10px;
     }
     .nav-logo img {
-      height: 52px;
+      height: 64px;
       width: auto;
-      border-radius: 6px;
+      max-width: 280px;
       object-fit: contain;
     }
     .nav-logo-text {
@@ -206,6 +206,10 @@
     /* ── MOBILE NAVBAR ── */
     @media (max-width: 700px) {
       .navbar { padding: 0 18px; height: 56px; }
+      .nav-logo img {
+        height: 48px;
+        max-width: 180px;
+      }
       .nav-links {
         display: none;
         flex-direction: column;
@@ -1387,7 +1391,7 @@
     }
     .zoom-reset:hover { background: var(--navy); color: #fff; }
 
-    /* ═══════════════════════════════════════════
+    /* ═══════════════════════════��═══════════════
        INDUSTRIES WE SERVE
     ═══════════════════════════════════════════ */
     #industries {
@@ -1558,10 +1562,9 @@
        NAVBAR
   ═══════════════════════════════════════════ -->
   <nav class="navbar">
-    <div class="nav-logo">
-      <img src="device control logo.jpeg" alt="Device &amp; Controls Logo" onerror="this.style.display='none'" />
-      <div class="nav-logo-text">Device &amp; Controls</div>
-    </div>
+  <div class="nav-logo">
+    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-WFtbuRSnNZu7Dlue3NkXgxBHl5PUF1.png" alt="Device &amp; Controls Logo" />
+  </div>
     <button class="nav-hamburger" onclick="toggleNav()" aria-label="Toggle menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="3" y1="6" x2="21" y2="6"/>
@@ -1656,7 +1659,7 @@
           delivered fast across India.
         </p>
         <div class="hero-ctas">
-          <a href="#brands" class="btn-primary">Explore Products</a>
+          <button class="btn-primary" id="heroExploreBtn" onclick="openProductsMenu(event)" type="button">Explore Products</button>
           <a href="#contact" class="btn-outline">Get a Quote</a>
         </div>
         <button class="msme-badge-trigger" onclick="openMSMEModal()" aria-label="View MSME Certificate">
@@ -1755,7 +1758,7 @@
       </div>
     </div>
   </section>
-  <!-- ═══════════════════════════════════════════
+  <!-- ═════════════════════════════�����═��═══════════
        WHY CHOOSE US
   ═══════════════════════════════════════════ -->
   <section class="section" id="why">
@@ -1815,6 +1818,13 @@
           </div>
         </div>
       </div>
+      <div style="display:flex; justify-content:center; margin-top:32px;">
+        <div style="position:relative; display:inline-block; max-width:400px; width:100%; background:linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d1a2d 100%); border-radius:16px; padding:24px; box-shadow:var(--shadow); border:2px solid rgba(255,165,0,0.4);">
+          <div style="position:absolute; inset:8px; border:1px solid rgba(255,180,50,0.3); border-radius:12px; pointer-events:none;"></div>
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-5syPxo09EZEPK108irJOvEgKyYhS7f.png" alt="Industrial Proximity Sensors" style="width:100%; height:auto; border-radius:8px; filter:drop-shadow(0 0 20px rgba(255,200,100,0.15));">
+          <div style="position:absolute; bottom:16px; right:16px; background:linear-gradient(90deg, #ff8c00, #ffa500); color:#fff; font-size:0.7rem; font-weight:700; padding:6px 14px; border-radius:4px; text-transform:uppercase; letter-spacing:0.5px; box-shadow:0 2px 8px rgba(255,140,0,0.4);">Industrial-Grade Sensors</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1832,9 +1842,8 @@
         <!-- Left: image -->
         <div class="industries-img-frame">
           <img
-            src="https://raw.githubusercontent.com/deviceandcontrols/deviceandcontrols/main/relay.png"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-hC3whrAqjx8BOb1brupZ7XAj9rKSq4.png"
             alt="Industrial Relay & Control Equipment"
-            onerror="this.onerror=null;this.src='relay.png';"
           />
           <div class="industries-img-tag">Industrial-Grade Equipment</div>
         </div>
@@ -1955,11 +1964,11 @@
           <div class="contact-info-list">
             <div class="contact-info-item">
               <div class="ci-icon">📞</div>
-              <span>+91 XXXXX XXXXX</span>
+              <span><a href="tel:+919147745287" style="color:inherit;">+91 91477 45287</a> / <a href="tel:+918240707385" style="color:inherit;">+91 82407 07385</a> / <a href="tel:+919331807898" style="color:inherit;">+91 93318 07898</a></span>
             </div>
             <div class="contact-info-item">
               <div class="ci-icon">✉</div>
-              <span>info@deviceandcontrols.com</span>
+              <span><a href="mailto:deviceandcontrols@gmail.com" style="color:inherit;">deviceandcontrols@gmail.com</a></span>
             </div>
             <div class="contact-info-item">
               <div class="ci-icon">🚚</div>
@@ -2005,8 +2014,8 @@
         <div class="footer-col">
           <h4>Contact Us</h4>
           <ul>
-            <li><a href="#">+91 XXXXX XXXXX</a></li>
-            <li><a href="#">info@deviceandcontrols.com</a></li>
+            <li><a href="tel:+919147745287">+91 91477 45287</a> / <a href="tel:+918240707385">+91 82407 07385</a> / <a href="tel:+919331807898">+91 93318 07898</a></li>
+            <li><a href="mailto:deviceandcontrols@gmail.com">deviceandcontrols@gmail.com</a></li>
             <li><a href="https://share.google/PXvCmoj5B6xpb5S3B" target="_blank" rel="noopener">160, Jodhpur Gardens, Kolkata 700045</a></li>
             <li><a href="#">India — PAN India Delivery</a></li>
           </ul>
@@ -2016,6 +2025,9 @@
         <span>© 2025 Device &amp; Controls. All rights reserved.</span>
         <span>Industrial Automation | Genuine Products | Fast Dispatch</span>
       </div>
+      <div style="text-align:center; margin-top:12px; font-size:0.72rem; color:rgba(255,255,255,0.38);">
+        Co-powered by KwantumPixel
+      </div>
     </div>
   </footer>
 
@@ -2023,7 +2035,7 @@
   <div class="fab-stack">
     <!-- Phone FAB -->
     <a class="fab-btn phone-fab"
-       href="tel:+91XXXXXXXXXX"
+       href="tel:+919147745287"
        aria-label="Call us">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
@@ -2033,7 +2045,7 @@
 
     <!-- Email FAB -->
     <a class="fab-btn email-fab"
-       href="mailto:info@deviceandcontrols.com?subject=Enquiry%20from%20Website"
+       href="mailto:deviceandcontrols@gmail.com?subject=Enquiry%20from%20Website"
        aria-label="Email us">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -2044,7 +2056,7 @@
 
     <!-- WhatsApp FAB -->
     <a class="fab-btn whatsapp-fab"
-       href="https://wa.me/91XXXXXXXXXX?text=Hello%20Device%20%26%20Controls!%20I%20need%20a%20quotation%20for%20industrial%20automation%20products."
+       href="https://wa.me/919147745287?text=Hello%20Device%20%26%20Controls!%20I%20need%20a%20quotation%20for%20industrial%20automation%20products."
        target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
       <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -2238,7 +2250,7 @@
 
   <!-- ═══════════════════════════════════════════
        GST MODAL — REAL GOI CERTIFICATE
-  ═══════════════════════════════════════════ -->
+  ═══════════════════════════════════════���═══ -->
   <div id="gstOverlay" role="dialog" aria-modal="true" aria-label="GST Registration Certificate" onclick="handleGSTOverlayClick(event)">
     <div id="gstModal">
 
@@ -2358,27 +2370,31 @@
       megaTrigger.setAttribute('aria-expanded', 'false');
     }
     function toggleMega(e) {
-      // On mobile: toggle accordion; on desktop: just navigate to #brands
+      // Toggle menu on click for both mobile and desktop
+      e.preventDefault();
+      megaParent.classList.contains('mega-open') ? closeMega() : openMega();
+    }
+
+    /* ── Open Products Menu from Hero Button ── */
+    function openProductsMenu(e) {
+      e.preventDefault();
       if (isMobile()) {
-        e.preventDefault();
-        megaParent.classList.contains('mega-open') ? closeMega() : openMega();
+        // On mobile, open the nav first then the mega menu
+        document.getElementById('navLinks').classList.add('open');
+        openMega();
+        // Scroll to make the menu visible
+        megaParent.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
-        closeMega();
-        closeNav();
-        // allow default href="#brands" navigation
+        // On desktop, just open the mega menu
+        openMega();
       }
     }
 
-    // Desktop hover
-    megaParent.addEventListener('mouseenter', function() {
-      if (!isMobile()) openMega();
-    });
-    megaParent.addEventListener('mouseleave', function() {
-      if (!isMobile()) closeMega();
-    });
-
-    // Close mega when clicking outside
+    // Close mega when clicking outside (click-based only, no hover)
     document.addEventListener('click', function(e) {
+      var heroBtn = document.getElementById('heroExploreBtn');
+      if (heroBtn && heroBtn.contains(e.target)) return; // Don't close if clicking hero button
+      if (megaTrigger.contains(e.target)) return; // Don't close if clicking the PRODUCTS trigger
       if (!megaParent.contains(e.target) && !document.getElementById('navLinks').contains(e.target)) {
         closeMega();
       }
