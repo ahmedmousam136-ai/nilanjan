@@ -2528,6 +2528,25 @@
     function closeMega() {
       megaParent.classList.remove('mega-open');
       megaTrigger.setAttribute('aria-expanded', 'false');
+      document.querySelectorAll('.submenu-item.submenu-open').forEach(function(el) {
+        el.classList.remove('submenu-open');
+        var t = el.querySelector('.submenu-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+    }
+    function toggleSubmenu(e, btn) {
+      e.preventDefault();
+      e.stopPropagation();
+      var item = btn.closest('.submenu-item');
+      var isOpen = item.classList.contains('submenu-open');
+      document.querySelectorAll('.submenu-item.submenu-open').forEach(function(el) {
+        if (el !== item) {
+          el.classList.remove('submenu-open');
+          el.querySelector('.submenu-trigger').setAttribute('aria-expanded', 'false');
+        }
+      });
+      item.classList.toggle('submenu-open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
     }
     function toggleMega(e) {
       // Toggle menu on click for both mobile and desktop
