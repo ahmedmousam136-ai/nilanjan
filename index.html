@@ -1794,8 +1794,20 @@
             <div class="mega-col">
               <div class="mega-col-title">Power, Switching &amp; Control</div>
               <ul>
-                <li><a href="#brands">SMPS (Power Supplies)</a></li>
-                <li><a href="#brands">Switchgears &amp; Thyristors</a></li>
+<li class="submenu-item" id="smpsItem">
+                  <button type="button" class="submenu-trigger" onclick="toggleSubmenu(event, this)" aria-expanded="false">
+                    SMPS (Power Supplies)
+                    <svg class="submenu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                  </button>
+                  <div class="submenu-panel">
+                    <a href="#brands" class="submenu-btn">Meanwell SMPS</a>
+                    <a href="#brands" class="submenu-btn">Siemens SMPS</a>
+                    <a href="#brands" class="submenu-btn">Phoenix Contact SMPS</a>
+                    <a href="#brands" class="submenu-btn">Delta SMPS</a>
+                    <a href="#brands" class="submenu-btn">Omron SMPS</a>
+                    <a href="#brands" class="submenu-btn">GIC SMPS</a>
+                  </div>
+                </li>                <li><a href="#brands">Switchgears &amp; Thyristors</a></li>
                 <li><a href="#brands">Relays (General, Board, SSR, ELR)</a></li>
                 <li><a href="#brands">Electronic Timers</a></li>
                 <li><a href="#brands">Safety Barriers</a></li>
