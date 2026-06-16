@@ -1879,7 +1879,16 @@
                     <a href="#brands" class="submenu-btn">Crompton Electric Motor</a>
                   </div>
                 </li>
-                <li><a href="#brands">Servo Motors &amp; Drives</a></li>
+               <li class="submenu-item">
+                  <button type="button" class="submenu-trigger" onclick="toggleSubmenu(event, this)" aria-expanded="false">
+                    Servo Motors &amp; Drives
+                    <svg class="submenu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                  </button>
+                  <div class="submenu-panel">
+                    <a href="#brands" class="submenu-btn">Omron Servo Motor &amp; Drives</a>
+                    <a href="#brands" class="submenu-btn">Delta Servo Motor &amp; Drives</a>
+                  </div>
+                </li>
                 <li><a href="#brands">Encoders</a></li>
                 <li><a href="#brands">Sensors (Proximity, Photoelectric, Limit)</a></li>
                 <li><a href="#brands">Temperature &amp; Pressure Gauges/Transmitters</a></li>
