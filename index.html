@@ -1865,10 +1865,10 @@
                     <svg class="submenu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                   </button>
                   <div class="submenu-panel">
-                    <a href="#brands" class="submenu-btn">Siemens PLC</a>
-                    <a href="#brands" class="submenu-btn">Siemens HMI</a>
-                    <a href="#brands" class="submenu-btn">Allen Bradley PLC</a>
-                    <a href="#brands" class="submenu-btn">Schneider PLC</a>
+                    <a href="#product-selector" class="submenu-btn" onclick="showProduct('siemens-plc')">Siemens PLC</a>
+                    <a href="#product-selector" class="submenu-btn" onclick="showProduct('siemens-hmi')">Siemens HMI</a>
+                    <a href="#product-selector" class="submenu-btn" onclick="showProduct('ab-plc')">Allen Bradley PLC</a>
+                    <a href="#product-selector" class="submenu-btn" onclick="showProduct('schneider-plc')">Schneider PLC</a>
                     <a href="#brands" class="submenu-btn">Schneider HMI</a>
                     <a href="#brands" class="submenu-btn">Weintek HMI</a>
                     <a href="#brands" class="submenu-btn">Omron PLC</a>
@@ -3110,10 +3110,8 @@
     function selectProduct(btn, key) {
       var product = psProducts[key];
       if (!product) return;
-      // Active button state
       document.querySelectorAll('.ps-btn').forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      // Hide placeholder, show image + code
+      if (btn) btn.classList.add('active');
       var placeholder = document.getElementById('psPlaceholder');
       var img = document.getElementById('psProductImg');
       var code = document.getElementById('psProductCode');
@@ -3122,9 +3120,14 @@
       img.style.display = 'block';
       code.style.display = 'block';
       img.src = product.img;
-      img.alt = btn.textContent.trim() + ' Product Image';
+      img.alt = key + ' Product Image';
       img.onload = function() { img.style.opacity = '1'; };
       code.textContent = '📦 Product Code: ' + product.code;
+    }
+
+    function showProduct(key) {
+      /* Called from the top navigation menu — scrolls to the section and shows the product */
+      setTimeout(function() { selectProduct(null, key); }, 300);
     }
   </script>
 
