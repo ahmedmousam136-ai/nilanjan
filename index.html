@@ -1869,7 +1869,7 @@
                     <a href="#product-selector" class="submenu-btn" onclick="showProduct('siemens-hmi')">Siemens HMI</a>
                     <a href="#product-selector" class="submenu-btn" onclick="showProduct('ab-plc')">Allen Bradley PLC</a>
                     <a href="#product-selector" class="submenu-btn" onclick="showProduct('schneider-plc')">Schneider PLC</a>
-                    <a href="#brands" class="submenu-btn">Schneider HMI</a>
+                    <a href="#product-selector" class="submenu-btn" onclick="showProduct('schneider-hmi')">Schneider HMI</a>
                     <a href="#brands" class="submenu-btn">Weintek HMI</a>
                     <a href="#brands" class="submenu-btn">Omron PLC</a>
                     <a href="#brands" class="submenu-btn">Omron HMI</a>
@@ -2413,6 +2413,33 @@
             <span class="ps-brand-label">Schneider</span>
             <div class="ps-btn-group">
               <button class="ps-btn" onclick="selectProduct(this,'schneider-plc')">PLC</button>
+              <button class="ps-btn" onclick="selectProduct(this,'schneider-hmi')">HMI</button>
+            </div>
+          </div>
+          <div class="ps-brand-group">
+            <span class="ps-brand-label">Weintek</span>
+            <div class="ps-btn-group">
+              <button class="ps-btn" onclick="selectProduct(this,'weintek-hmi')">HMI</button>
+            </div>
+          </div>
+          <div class="ps-brand-group">
+            <span class="ps-brand-label">Omron</span>
+            <div class="ps-btn-group">
+              <button class="ps-btn" onclick="selectProduct(this,'omron-plc')">PLC</button>
+              <button class="ps-btn" onclick="selectProduct(this,'omron-hmi')">HMI</button>
+            </div>
+          </div>
+          <div class="ps-brand-group">
+            <span class="ps-brand-label">Delta</span>
+            <div class="ps-btn-group">
+              <button class="ps-btn" onclick="selectProduct(this,'delta-plc')">PLC</button>
+              <button class="ps-btn" onclick="selectProduct(this,'delta-hmi')">HMI</button>
+            </div>
+          </div>
+          <div class="ps-brand-group">
+            <span class="ps-brand-label">Mitsubishi</span>
+            <div class="ps-btn-group">
+              <button class="ps-btn" onclick="selectProduct(this,'mitsubishi-plc')">PLC</button>
             </div>
           </div>
         </div>
@@ -3104,6 +3131,34 @@
       'schneider-plc': {
         img: 'https://raw.githubusercontent.com/ahmedmousam136-ai/nilanjan/main/schneider-plc.jpg',
         code: 'SKU-SCHNEIDER-PLC-001'
+      },
+      'schneider-hmi': {
+        img: 'https://raw.githubusercontent.com/ahmedmousam136-ai/nilanjan/main/schneider_hmi.jpg',
+        code: 'SC-HMI-001'
+      },
+      'weintek-hmi': {
+        img: 'https://raw.githubusercontent.com/ahmedmousam136-ai/nilanjan/main/weintek_hmi.jpg',
+        code: 'WT-HMI-001'
+      },
+      'omron-plc': {
+        img: 'https://raw.githubusercontent.com/ahmedmousam136-ai/nilanjan/main/omron_plc.jpg',
+        code: 'OM-PLC-001'
+      },
+      'omron-hmi': {
+        img: 'https://raw.githubusercontent.com/ahmedmousam136-ai/nilanjan/main/omron_hmi.jpg',
+        code: 'OM-HMI-001'
+      },
+      'delta-plc': {
+        img: 'https://raw.githubusercontent.com/ahmedmousam136-ai/nilanjan/main/delta_plc.jpg',
+        code: 'DL-PLC-001'
+      },
+      'delta-hmi': {
+        img: 'https://raw.githubusercontent.com/ahmedmousam136-ai/nilanjan/main/delta_hmi.jpg',
+        code: 'DL-HMI-001'
+      },
+      'mitsubishi-plc': {
+        img: 'https://raw.githubusercontent.com/ahmedmousam136-ai/nilanjan/main/mitsubishi_plc.jpg',
+        code: 'MI-PLC-001'
       }
     };
 
