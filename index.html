@@ -1687,6 +1687,143 @@
       }
     }
 
+    /* ═══════════════════════════════════════════
+       PRODUCT SELECTOR SECTION
+    ═══════════════════════════════════════════ */
+    #product-selector { background: var(--light); }
+
+    .ps-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 28px;
+      margin-top: 40px;
+      align-items: start;
+    }
+    .ps-sidebar {
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 22px 18px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 80px;
+    }
+    .ps-brand-group { margin-bottom: 22px; }
+    .ps-brand-group:last-child { margin-bottom: 0; }
+    .ps-brand-label {
+      display: block;
+      font-size: 0.64rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      border-bottom: 1.5px solid rgba(245,166,35,0.25);
+    }
+    .ps-btn-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ps-btn {
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.82);
+      font-family: inherit;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+    }
+    .ps-btn:hover, .ps-btn.active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: var(--navy);
+    }
+    .ps-display-area { display: flex; flex-direction: column; gap: 24px; }
+    .ps-image-box {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      min-height: 300px;
+      justify-content: center;
+    }
+    .ps-image-box img {
+      max-width: 100%;
+      max-height: 260px;
+      object-fit: contain;
+      border-radius: 8px;
+      transition: opacity 0.25s;
+    }
+    .ps-product-code {
+      font-family: 'Montserrat', monospace;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--light);
+      border: 1.5px solid var(--border);
+      border-left: 4px solid var(--orange);
+      padding: 10px 18px;
+      border-radius: 4px;
+      width: 100%;
+      text-align: center;
+    }
+    .ps-placeholder {
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
+      padding: 30px 20px;
+      line-height: 1.7;
+    }
+    .ps-placeholder-icon {
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+      display: block;
+      opacity: 0.4;
+    }
+    .ps-enquiry-form {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+    .ps-enquiry-form h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--orange);
+    }
+    @media (max-width: 860px) {
+      .ps-layout { grid-template-columns: 1fr; }
+      .ps-sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        padding: 18px;
+      }
+      .ps-brand-group { margin-bottom: 0; }
+    }
+    @media (max-width: 540px) {
+      .ps-sidebar { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 380px) {
+      .ps-sidebar { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -2242,6 +2379,76 @@
           </ul>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PRODUCT SELECTOR
+  ═══════════════════════════════════════════ -->
+  <section class="section" id="product-selector">
+    <div class="section-inner">
+      <div class="section-tag">Browse Products</div>
+      <div class="section-title">Select a Product</div>
+      <div class="section-sub">Click a brand and category to instantly view the product image and code. Use the form below to enquire.</div>
+
+      <div class="ps-layout">
+
+        <!-- ── Sidebar Navigation ── -->
+        <div class="ps-sidebar">
+          <div class="ps-brand-group">
+            <span class="ps-brand-label">Siemens</span>
+            <div class="ps-btn-group">
+              <button class="ps-btn" onclick="selectProduct(this,'siemens-plc')">PLC</button>
+              <button class="ps-btn" onclick="selectProduct(this,'siemens-hmi')">HMI</button>
+            </div>
+          </div>
+          <div class="ps-brand-group">
+            <span class="ps-brand-label">Allen Bradley</span>
+            <div class="ps-btn-group">
+              <button class="ps-btn" onclick="selectProduct(this,'ab-plc')">PLC</button>
+            </div>
+          </div>
+          <div class="ps-brand-group">
+            <span class="ps-brand-label">Schneider</span>
+            <div class="ps-btn-group">
+              <button class="ps-btn" onclick="selectProduct(this,'schneider-plc')">PLC</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Display Area + Enquiry Form ── -->
+        <div class="ps-display-area">
+
+          <!-- Product Image & Code -->
+          <div class="ps-image-box" id="psImageBox">
+            <div class="ps-placeholder" id="psPlaceholder">
+              <span class="ps-placeholder-icon">🔌</span>
+              Select a brand and category from the panel to view the product image and code.
+            </div>
+            <img id="psProductImg" src="" alt="Product" style="display:none;" />
+            <div class="ps-product-code" id="psProductCode" style="display:none;"></div>
+          </div>
+
+          <!-- Enquiry Form -->
+          <div class="ps-enquiry-form">
+            <h3>✉️ Enquire About This Product</h3>
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="e.g. Rahul Sharma" />
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="you@example.com" />
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea placeholder="Describe your requirement or ask about this product…"></textarea>
+            </div>
+            <button class="btn-form-submit" type="button"><span>Send Enquiry →</span></button>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
@@ -2879,6 +3086,46 @@
       sliderTimer = setInterval(function() { goToSlide(sliderCurrent + 1); }, 4000);
     }
     resetSliderTimer();
+
+    /* ── Product Selector ── */
+    var psProducts = {
+      'siemens-plc': {
+        img: 'https://raw.githubusercontent.com/ahmedmousam136-ai/nilanjan/main/siemens-plc.jpg',
+        code: 'SKU-SIEMENS-PLC-001'
+      },
+      'siemens-hmi': {
+        img: 'https://raw.githubusercontent.com/ahmedmousam136-ai/nilanjan/main/siemens-hmi.jpg',
+        code: 'SKU-SIEMENS-HMI-001'
+      },
+      'ab-plc': {
+        img: 'https://raw.githubusercontent.com/ahmedmousam136-ai/nilanjan/main/allen-bradley-plc.jpg',
+        code: 'SKU-AB-PLC-001'
+      },
+      'schneider-plc': {
+        img: 'https://raw.githubusercontent.com/ahmedmousam136-ai/nilanjan/main/schneider-plc.jpg',
+        code: 'SKU-SCHNEIDER-PLC-001'
+      }
+    };
+
+    function selectProduct(btn, key) {
+      var product = psProducts[key];
+      if (!product) return;
+      // Active button state
+      document.querySelectorAll('.ps-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      // Hide placeholder, show image + code
+      var placeholder = document.getElementById('psPlaceholder');
+      var img = document.getElementById('psProductImg');
+      var code = document.getElementById('psProductCode');
+      placeholder.style.display = 'none';
+      img.style.opacity = '0';
+      img.style.display = 'block';
+      code.style.display = 'block';
+      img.src = product.img;
+      img.alt = btn.textContent.trim() + ' Product Image';
+      img.onload = function() { img.style.opacity = '1'; };
+      code.textContent = '📦 Product Code: ' + product.code;
+    }
   </script>
 
 </body>
